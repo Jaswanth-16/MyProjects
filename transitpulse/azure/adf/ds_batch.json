@@ -1,0 +1,16 @@
+{
+  "name": "ds_batch",
+  "properties": {
+    "linkedServiceName": {"referenceName": "ls_lake", "type": "LinkedServiceReference"},
+    "parameters": {"folder": {"type": "String"}, "file": {"type": "String"}},
+    "type": "Binary",
+    "typeProperties": {
+      "location": {
+        "type": "AzureBlobFSLocation",
+        "fileSystem": "transitpulse",
+        "folderPath": {"value": "@dataset().folder", "type": "Expression"},
+        "fileName": {"value": "@dataset().file", "type": "Expression"}
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+// Role filter on DimRoute. UserAccess is a disconnected table with UPN and Depot.
+// Unmatched users receive no route access. Multiple depot rows per user are allowed.
+VAR AllowedDepots =
+    SELECTCOLUMNS(
+        FILTER(UserAccess, LOWER(UserAccess[UPN]) = LOWER(USERPRINCIPALNAME())),
+        "AllowedDepot", UserAccess[Depot]
+    )
+RETURN DimRoute[depot] IN AllowedDepots

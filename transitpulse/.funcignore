@@ -1,0 +1,12 @@
+.git*
+.venv/
+__pycache__/
+tests/
+docs/
+examples/
+powerbi/
+azure/
+scripts/
+workspace*/
+dist/
+local.settings.json

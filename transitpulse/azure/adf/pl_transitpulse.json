@@ -1,0 +1,34 @@
+{
+  "name": "pl_transitpulse",
+  "properties": {
+    "description": "Copy one immutable input batch, validate and merge it, then atomically publish a versioned analytics snapshot.",
+    "concurrency": 1,
+    "parameters": {"batchFile": {"type": "String"}},
+    "activities": [
+      {
+        "name": "ArchiveBronze",
+        "type": "Copy",
+        "policy": {"timeout": "0.00:05:00", "retry": 2, "retryIntervalInSeconds": 30, "secureInput": false, "secureOutput": false},
+        "typeProperties": {
+          "source": {"type": "BinarySource", "storeSettings": {"type": "AzureBlobFSReadSettings", "recursive": false}},
+          "sink": {"type": "BinarySink", "storeSettings": {"type": "AzureBlobFSWriteSettings"}}
+        },
+        "inputs": [{"referenceName": "ds_batch", "type": "DatasetReference", "parameters": {"folder": "landing", "file": {"value": "@pipeline().parameters.batchFile", "type": "Expression"}}}],
+        "outputs": [{"referenceName": "ds_batch", "type": "DatasetReference", "parameters": {"folder": {"value": "@concat('bronze/', pipeline().RunId)", "type": "Expression"}, "file": {"value": "@pipeline().parameters.batchFile", "type": "Expression"}}}]
+      },
+      {
+        "name": "ValidateMergePublish",
+        "type": "AzureFunctionActivity",
+        "dependsOn": [{"activity": "ArchiveBronze", "dependencyConditions": ["Succeeded"]}],
+        "policy": {"timeout": "0.00:03:30", "retry": 2, "retryIntervalInSeconds": 30, "secureInput": true, "secureOutput": false},
+        "linkedServiceName": {"referenceName": "ls_function", "type": "LinkedServiceReference"},
+        "typeProperties": {
+          "functionName": "process",
+          "method": "POST",
+          "headers": {"Content-Type": "application/json"},
+          "body": {"value": "@concat('{\"blob_name\":\"bronze/', pipeline().RunId, '/', pipeline().parameters.batchFile, '\"}')", "type": "Expression"}
+        }
+      }
+    ]
+  }
+}

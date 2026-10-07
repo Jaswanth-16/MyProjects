@@ -1,0 +1,51 @@
+{
+  "dataset": "deterministic synthetic trips",
+  "seed": 42,
+  "initial": {
+    "run_id": "df2bb51ebc954917b002bad42c1e755f",
+    "batch_hash": "9f47f9fc0e8b939339201aac3fda17bdc7e5f4631de6a2e8f8c54363e35a5626",
+    "status": "committed",
+    "rows_read": 10000,
+    "inserted": 10000,
+    "updated": 0,
+    "unchanged": 0,
+    "stale": 0,
+    "rejected": 0
+  },
+  "delta": {
+    "run_id": "e8fdd84c66b349bd81136b1dbfce83ed",
+    "batch_hash": "f56a1146c9470cd5d2a0287beda64161818252dd6da6622ca15f08a6dbceceb3",
+    "status": "committed",
+    "rows_read": 360,
+    "inserted": 200,
+    "updated": 100,
+    "unchanged": 30,
+    "stale": 20,
+    "rejected": 10
+  },
+  "replay": {
+    "run_id": "74f2521a3e224b7696ed42053c577c26",
+    "batch_hash": "f56a1146c9470cd5d2a0287beda64161818252dd6da6622ca15f08a6dbceceb3",
+    "status": "skipped",
+    "rows_read": 0,
+    "inserted": 0,
+    "updated": 0,
+    "unchanged": 0,
+    "stale": 0,
+    "rejected": 0
+  },
+  "unique_trips": 10200,
+  "elapsed_seconds": 0.3728,
+  "kpis": {
+    "scheduled_trips": 10200,
+    "completed_trips": 9772,
+    "cancelled_trips": 428,
+    "passengers": 260104,
+    "revenue_paise": 943245500,
+    "on_time_pct": 70.32,
+    "cancellation_pct": 4.2,
+    "avg_delay_minutes": 4.46,
+    "load_factor_pct": 59.11
+  },
+  "validation_scope": "Executed locally with synthetic data; Azure services and Power BI Desktop not deployed."
+}

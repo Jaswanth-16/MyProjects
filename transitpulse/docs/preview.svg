@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" role="img" aria-labelledby="title desc">
+<title id="title">TransitPulse synthetic transit analytics</title>
+<desc id="desc">KPI cards and on-time performance by route, calculated from the reproducible demonstration.</desc>
+<rect width="1120" height="640" rx="22" fill="#101c2c"/>
+<g font-family="Arial,sans-serif" fill="#e9f1fb">
+<text x="42" y="58" font-size="15" fill="#59dac3" letter-spacing="3">DATA ENGINEERING / TRANSIT OPERATIONS</text>
+<text x="42" y="110" font-size="42" font-weight="bold">TransitPulse</text>
+<text x="42" y="143" font-size="16" fill="#a9bdd4">Incremental ingestion. Trusted metrics. Reproducible results.</text>
+<rect x="42" y="178" width="244" height="110" rx="12" fill="#1b2c43"/>
+<text x="60" y="208" font-size="14" fill="#a9bdd4">Scheduled trips</text>
+<text x="60" y="255" font-size="34" font-weight="bold">10,200</text>
+<rect x="302" y="178" width="244" height="110" rx="12" fill="#1b2c43"/>
+<text x="320" y="208" font-size="14" fill="#a9bdd4">On-time arrivals</text>
+<text x="320" y="255" font-size="34" font-weight="bold">70.32%</text>
+<rect x="562" y="178" width="244" height="110" rx="12" fill="#1b2c43"/>
+<text x="580" y="208" font-size="14" fill="#a9bdd4">Passengers</text>
+<text x="580" y="255" font-size="34" font-weight="bold">260,104</text>
+<rect x="822" y="178" width="244" height="110" rx="12" fill="#1b2c43"/>
+<text x="840" y="208" font-size="14" fill="#a9bdd4">Cancellation rate</text>
+<text x="840" y="255" font-size="34" font-weight="bold">4.20%</text>
+<text x="42" y="333" font-size="20" font-weight="bold">On-time performance by route</text>
+<text x="42" y="374" font-size="15">City Loop North</text>
+<rect x="255" y="358" width="675" height="22" rx="5" fill="#263a53"/>
+<rect x="255" y="358" width="487.0" height="22" rx="5" fill="#59dac3"/>
+<text x="950" y="375" font-size="16">72.14%</text>
+<text x="42" y="409" font-size="15">Technology Park</text>
+<rect x="255" y="393" width="675" height="22" rx="5" fill="#263a53"/>
+<rect x="255" y="393" width="459.8" height="22" rx="5" fill="#59dac3"/>
+<text x="950" y="410" font-size="16">68.13%</text>
+<text x="42" y="444" font-size="15">University Link</text>
+<rect x="255" y="428" width="675" height="22" rx="5" fill="#263a53"/>
+<rect x="255" y="428" width="480.1" height="22" rx="5" fill="#59dac3"/>
+<text x="950" y="445" font-size="16">71.13%</text>
+<text x="42" y="479" font-size="15">City Loop South</text>
+<rect x="255" y="463" width="675" height="22" rx="5" fill="#263a53"/>
+<rect x="255" y="463" width="477.2" height="22" rx="5" fill="#59dac3"/>
+<text x="950" y="480" font-size="16">70.69%</text>
+<text x="42" y="514" font-size="15">Central Station</text>
+<rect x="255" y="498" width="675" height="22" rx="5" fill="#263a53"/>
+<rect x="255" y="498" width="474.6" height="22" rx="5" fill="#59dac3"/>
+<text x="950" y="515" font-size="16">70.30%</text>
+<text x="42" y="549" font-size="15">Airport Connector</text>
+<rect x="255" y="533" width="675" height="22" rx="5" fill="#263a53"/>
+<rect x="255" y="533" width="469.5" height="22" rx="5" fill="#59dac3"/>
+<text x="950" y="550" font-size="16">69.55%</text>
+<text x="42" y="615" font-size="13" fill="#a9bdd4">SYNTHETIC DATA | Completed-trip denominator | On time = arrival delay &lt;= 5 minutes</text>
+</g></svg>

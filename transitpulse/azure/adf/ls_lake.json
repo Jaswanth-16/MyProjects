@@ -1,0 +1,8 @@
+{
+  "name": "ls_lake",
+  "properties": {
+    "type": "AzureBlobFS",
+    "typeProperties": {"url": "__STORAGE_DFS_URL__"},
+    "annotations": ["System-assigned managed identity; no storage key"]
+  }
+}

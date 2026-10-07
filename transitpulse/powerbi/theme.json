@@ -1,0 +1,7 @@
+{
+  "name": "TransitPulse",
+  "dataColors": ["#59DAC3", "#69A6F9", "#F2BE69", "#CC86E8", "#EF8F98", "#85C5E9"],
+  "background": "#101C2C",
+  "foreground": "#E9F1FB",
+  "tableAccent": "#59DAC3"
+}

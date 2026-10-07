@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+local.settings.json
+*.sqlite*
+transitpulse/workspace*/
+transitpulse/dist/
+transitpulse/azure/parameters.local.json
+.DS_Store

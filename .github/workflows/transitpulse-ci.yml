@@ -1,0 +1,41 @@
+name: TransitPulse CI
+on:
+  push:
+    paths: ['transitpulse/**', '.github/workflows/transitpulse-ci.yml']
+  pull_request:
+    paths: ['transitpulse/**', '.github/workflows/transitpulse-ci.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    defaults:
+      run:
+        working-directory: transitpulse
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install cloud adapter dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Test transactions, data quality, cloud concurrency and SDK adapter
+        run: python -m unittest discover -s tests -v
+      - name: Reconcile the full demo and replay
+        run: python -m transitpulse demo --workspace workspace-ci --count 10000
+      - name: Verify cloud function discovery
+        run: python -c "import function_app; assert len(function_app.app.get_functions()) == 1"
+      - name: Validate configuration and compile Python
+        run: |
+          python scripts/check_assets.py
+          python -m compileall -q transitpulse function_app.py scripts tests
+  infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile Bicep without deploying resources
+        run: az bicep build --file transitpulse/azure/main.bicep --outfile "$RUNNER_TEMP/transitpulse-arm.json"

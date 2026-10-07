@@ -1,0 +1,7 @@
+{
+  "name": "ls_keyvault",
+  "properties": {
+    "type": "AzureKeyVault",
+    "typeProperties": {"baseUrl": "__KEYVAULT_URL__"}
+  }
+}

@@ -1,0 +1,28 @@
+// Create each measure individually in Power BI. Rates should use Percentage formatting.
+
+Scheduled Trips = COUNTROWS(FactTrip)
+
+Completed Trips =
+    CALCULATE(COUNTROWS(FactTrip), KEEPFILTERS(FactTrip[status] = "completed"))
+
+Cancelled Trips =
+    CALCULATE(COUNTROWS(FactTrip), KEEPFILTERS(FactTrip[status] = "cancelled"))
+
+On-time Trips =
+    CALCULATE(COUNTROWS(FactTrip),
+        KEEPFILTERS(FactTrip[status] = "completed"), KEEPFILTERS(FactTrip[on_time] = 1))
+
+On-time % = DIVIDE([On-time Trips], [Completed Trips])
+
+Cancellation % = DIVIDE([Cancelled Trips], [Scheduled Trips])
+
+Passengers = SUM(FactTrip[passengers])
+
+Revenue INR = DIVIDE(SUM(FactTrip[revenue_paise]), 100)
+
+Completed Capacity =
+    CALCULATE(SUM(FactTrip[capacity]), KEEPFILTERS(FactTrip[status] = "completed"))
+
+Load Factor % = DIVIDE([Passengers], [Completed Capacity])
+
+Average Arrival Delay Minutes = AVERAGE(FactTrip[delay_minutes])

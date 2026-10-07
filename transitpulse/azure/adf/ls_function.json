@@ -1,0 +1,14 @@
+{
+  "name": "ls_function",
+  "properties": {
+    "type": "AzureFunction",
+    "typeProperties": {
+      "functionAppUrl": "__FUNCTION_URL__",
+      "functionKey": {
+        "type": "AzureKeyVaultSecret",
+        "store": {"referenceName": "ls_keyvault", "type": "LinkedServiceReference"},
+        "secretName": "transitpulse-function-key"
+      }
+    }
+  }
+}

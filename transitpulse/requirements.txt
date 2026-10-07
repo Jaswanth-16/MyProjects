@@ -1,0 +1,4 @@
+# Optional cloud adapter only. Local demo and unit tests have zero dependencies.
+azure-functions>=1.21,<2
+azure-identity>=1.19,<2
+azure-storage-blob>=12.24,<13

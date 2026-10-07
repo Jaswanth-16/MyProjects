@@ -1,0 +1,152 @@
+[
+  {
+    "id": "case-01",
+    "question": "Copy to ADLS fails with AuthorizationPermissionMismatch",
+    "expected": "storage-access"
+  },
+  {
+    "id": "case-02",
+    "question": "Storage request is 403 forbidden and managed identity cannot access the directory",
+    "expected": "storage-access"
+  },
+  {
+    "id": "case-03",
+    "question": "Which ACL and RBAC checks explain a storage permission failure?",
+    "expected": "storage-access"
+  },
+  {
+    "id": "case-04",
+    "question": "Copy activity reports SqlTimeout",
+    "expected": "sql-timeout"
+  },
+  {
+    "id": "case-05",
+    "question": "A SQL query is timed out and database blocking is suspected",
+    "expected": "sql-timeout"
+  },
+  {
+    "id": "case-06",
+    "question": "SQL source query execution is slow; how can I investigate the timeout?",
+    "expected": "sql-timeout"
+  },
+  {
+    "id": "case-07",
+    "question": "UserErrorInvalidColumnMappingColumnNotFound after a CSV header changed",
+    "expected": "schema-mismatch"
+  },
+  {
+    "id": "case-08",
+    "question": "Copy data type conversion failed and column mappings no longer match",
+    "expected": "schema-mismatch"
+  },
+  {
+    "id": "case-09",
+    "question": "My source schema changed and a mapped column is missing",
+    "expected": "schema-mismatch"
+  },
+  {
+    "id": "case-10",
+    "question": "Self hosted IR-Offline stopped processing activities",
+    "expected": "ir-offline"
+  },
+  {
+    "id": "case-11",
+    "question": "The self hosted integration runtime node has no heartbeat",
+    "expected": "ir-offline"
+  },
+  {
+    "id": "case-12",
+    "question": "Gateway service disconnected and integration runtime is offline",
+    "expected": "ir-offline"
+  },
+  {
+    "id": "case-13",
+    "question": "HTTP 429 TooManyRequests during ingestion",
+    "expected": "throttling"
+  },
+  {
+    "id": "case-14",
+    "question": "Service rate limit reached; should I reduce concurrency and retry?",
+    "expected": "throttling"
+  },
+  {
+    "id": "case-15",
+    "question": "The source API is throttled after too many requests",
+    "expected": "throttling"
+  },
+  {
+    "id": "case-16",
+    "question": "ReplayDuplicate after re-running yesterday load",
+    "expected": "duplicates"
+  },
+  {
+    "id": "case-17",
+    "question": "Incremental pipeline inserts duplicate rows after retry",
+    "expected": "duplicates"
+  },
+  {
+    "id": "case-18",
+    "question": "How do business keys and upsert prevent repeated records on replay?",
+    "expected": "duplicates"
+  },
+  {
+    "id": "case-19",
+    "question": "AADSTS7000222 from linked service connection test",
+    "expected": "credential-expiry"
+  },
+  {
+    "id": "case-20",
+    "question": "Key Vault secret expired and authentication failed",
+    "expected": "credential-expiry"
+  },
+  {
+    "id": "case-21",
+    "question": "Database LoginFailed after rotating linked service password",
+    "expected": "credential-expiry"
+  },
+  {
+    "id": "case-22",
+    "question": "FunctionInvocationFailed during ADF execution",
+    "expected": "function-failure"
+  },
+  {
+    "id": "case-23",
+    "question": "Function activity response JSON is invalid",
+    "expected": "function-failure"
+  },
+  {
+    "id": "case-24",
+    "question": "Azure Function HTTP 500 exception during invocation",
+    "expected": "function-failure"
+  },
+  {
+    "id": "case-25",
+    "question": "What is the capital of France?",
+    "expected": null
+  },
+  {
+    "id": "case-26",
+    "question": "Write a poem about the ocean",
+    "expected": null
+  },
+  {
+    "id": "case-27",
+    "question": "Explain quantum entanglement",
+    "expected": null
+  },
+  {
+    "id": "case-28",
+    "question": "Which stocks should I purchase?",
+    "expected": null
+  },
+  {
+    "id": "case-29",
+    "question": "Hello there",
+    "expected": null
+  },
+  {
+    "id": "case-30",
+    "question": "Tell me a joke",
+    "expected": null
+  }
+]

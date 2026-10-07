@@ -1,0 +1,17 @@
+[
+  {
+    "name": "ADLS access denied",
+    "question": "Why did the copy to storage fail?",
+    "log": "Pipeline: demo_bronze\nActivity: CopyTrips\nErrorCode: AuthorizationPermissionMismatch\nMessage: HTTP 403 forbidden. AccountKey=DEMO_NOT_A_REAL_KEY;"
+  },
+  {
+    "name": "CSV schema drift",
+    "question": "How should I investigate this failure?",
+    "log": "UserErrorInvalidColumnMappingColumnNotFound: source column trip_id is missing"
+  },
+  {
+    "name": "Unsupported question",
+    "question": "Explain quantum entanglement",
+    "log": ""
+  }
+]

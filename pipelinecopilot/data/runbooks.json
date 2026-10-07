@@ -1,0 +1,139 @@
+[
+  {
+    "id": "storage-access",
+    "title": "ADLS storage authorization failure",
+    "symptoms": "403 forbidden authorization denied permission ACL managed identity storage access",
+    "codes": [
+      "AuthorizationPermissionMismatch",
+      "Forbidden"
+    ],
+    "checks": [
+      "Identify the managed identity used by the linked service, then check its scoped storage data permissions.",
+      "For hierarchical namespace paths, inspect directory traversal and file access ACLs as well as RBAC.",
+      "Check storage firewall and private endpoint routing before changing permissions; do not grant broad Owner access."
+    ],
+    "source_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control-model",
+    "kind": "Portfolio-authored runbook; source link for verification",
+    "reviewed_on": "2026-10-07"
+  },
+  {
+    "id": "sql-timeout",
+    "title": "SQL query timeout",
+    "symptoms": "sql database query timeout timed slow blocking execution connection",
+    "codes": [
+      "SqlOperationFailed",
+      "SqlTimeout"
+    ],
+    "checks": [
+      "Inspect the full inner SQL error to distinguish authentication, syntax and timeout failures.",
+      "For timeout symptoms, inspect query plans, blocking and source workload before increasing activity timeouts.",
+      "Test a bounded query and compare throughput; use suitable indexes and partitioning when supported."
+    ],
+    "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/copy-activity-performance-troubleshooting",
+    "kind": "Portfolio-authored runbook; source link for verification",
+    "reviewed_on": "2026-10-07"
+  },
+  {
+    "id": "schema-mismatch",
+    "title": "Copy activity schema or column mismatch",
+    "symptoms": "schema column mapping missing changed csv data type conversion incompatible",
+    "codes": [
+      "UserErrorInvalidColumnMappingColumnNotFound",
+      "TypeConversionFailure"
+    ],
+    "checks": [
+      "Compare the current source schema with explicit Copy activity mappings and the sink schema.",
+      "Check delimiter, headers and sampled data types before regenerating mappings.",
+      "Test representative rows in a separate destination before applying schema changes to production."
+    ],
+    "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/copy-activity-schema-and-type-mapping",
+    "kind": "Portfolio-authored runbook; source link for verification",
+    "reviewed_on": "2026-10-07"
+  },
+  {
+    "id": "ir-offline",
+    "title": "Self-hosted integration runtime offline",
+    "symptoms": "self hosted integration runtime offline node disconnected heartbeat gateway unavailable",
+    "codes": [
+      "IntegrationRuntimeUnavailable",
+      "IR-Offline"
+    ],
+    "checks": [
+      "Check self-hosted integration runtime node health and whether the host and service are running.",
+      "Inspect outbound connectivity, proxy and firewall settings required by the runtime.",
+      "Review node logs and resource pressure; validate recovery with a small pipeline run."
+    ],
+    "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide",
+    "kind": "Portfolio-authored runbook; source link for verification",
+    "reviewed_on": "2026-10-07"
+  },
+  {
+    "id": "throttling",
+    "title": "Transient service throttling",
+    "symptoms": "429 throttling too many requests rate limit retry backoff concurrency",
+    "codes": [
+      "TooManyRequests",
+      "429"
+    ],
+    "checks": [
+      "Confirm that the error is transient throttling and inspect any Retry-After indication.",
+      "Reduce concurrency and use bounded retries with increasing delay; do not retry indefinitely.",
+      "Verify idempotency before retrying writes and escalate sustained quota or capacity constraints."
+    ],
+    "source_url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry",
+    "kind": "Portfolio-authored runbook; source link for verification",
+    "reviewed_on": "2026-10-07"
+  },
+  {
+    "id": "duplicates",
+    "title": "Duplicate records after pipeline replay",
+    "symptoms": "duplicate repeated rows replay retry incremental watermark upsert merge primary key",
+    "codes": [
+      "DuplicateKey",
+      "ReplayDuplicate"
+    ],
+    "checks": [
+      "Compare business keys and source update versions to distinguish legitimate corrections from duplicate delivery.",
+      "Use a unique business key and a transactional merge or upsert; record successful ingestion only with the committed load.",
+      "Replay a sample batch and verify unchanged row counts and totals before enabling retries."
+    ],
+    "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/tutorial-incremental-copy-overview",
+    "kind": "Portfolio-authored runbook; source link for verification",
+    "reviewed_on": "2026-10-07"
+  },
+  {
+    "id": "credential-expiry",
+    "title": "Linked service authentication or secret expiry",
+    "symptoms": "authentication expired credential secret password login failed key vault linked service token",
+    "codes": [
+      "LoginFailed",
+      "InvalidAuthenticationToken",
+      "AADSTS7000222"
+    ],
+    "checks": [
+      "Determine which credential the linked service uses and inspect its expiry without logging its value.",
+      "Check Key Vault access and the configured secret version; validate identity permissions separately.",
+      "Rotate expired credentials through the normal secret-management process, then test the linked service connection."
+    ],
+    "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/store-credentials-in-key-vault",
+    "kind": "Portfolio-authored runbook; source link for verification",
+    "reviewed_on": "2026-10-07"
+  },
+  {
+    "id": "function-failure",
+    "title": "Azure Function invocation failure",
+    "symptoms": "function activity http 500 invocation exception crash response json execution",
+    "codes": [
+      "FunctionInvocationFailed",
+      "FunctionResponseInvalid"
+    ],
+    "checks": [
+      "Check Function execution traces for the same run and correlation identifiers.",
+      "Validate request and response contracts, including the response expected by the ADF Azure Function activity.",
+      "Check function authentication, app configuration and dependencies; do not paste keys into troubleshooting logs."
+    ],
+    "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/control-flow-azure-function-activity",
+    "kind": "Portfolio-authored runbook; source link for verification",
+    "reviewed_on": "2026-10-07"
+  }
+]

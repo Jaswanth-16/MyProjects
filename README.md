@@ -12,3 +12,11 @@ optional Azure Data Factory, ADLS Gen2 and Azure Functions deployment path.
 [Explore the project](transitpulse/) · [Architecture](transitpulse/docs/architecture.md) · [Power BI guide](transitpulse/powerbi/README.md)
 
 ![TransitPulse synthetic-data dashboard](transitpulse/docs/preview.svg)
+
+### [PipelineCopilot — Source-cited Pipeline Troubleshooting](pipelinecopilot/)
+
+A Python troubleshooting assistant with a local web interface, eight Azure pipeline runbooks,
+BM25/error-code retrieval and an optional Azure OpenAI RAG adapter. Includes credential redaction,
+citation validation, extractive fallback, 39 tests and a transparent 30-case retrieval benchmark.
+
+[Run the demo](pipelinecopilot/) · [Architecture](pipelinecopilot/docs/architecture.md) · [Interview guide](pipelinecopilot/docs/portfolio-guide.md)

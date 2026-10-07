@@ -1,0 +1,190 @@
+{
+  "evaluation": "Curated lexical retrieval benchmark, not live LLM answer quality",
+  "cases": 30,
+  "supported_cases": 24,
+  "unsupported_cases": 6,
+  "top1_accuracy": 1.0,
+  "abstention_accuracy": 1.0,
+  "details": [
+    {
+      "id": "case-01",
+      "expected": "storage-access",
+      "actual": "storage-access",
+      "pass": true
+    },
+    {
+      "id": "case-02",
+      "expected": "storage-access",
+      "actual": "storage-access",
+      "pass": true
+    },
+    {
+      "id": "case-03",
+      "expected": "storage-access",
+      "actual": "storage-access",
+      "pass": true
+    },
+    {
+      "id": "case-04",
+      "expected": "sql-timeout",
+      "actual": "sql-timeout",
+      "pass": true
+    },
+    {
+      "id": "case-05",
+      "expected": "sql-timeout",
+      "actual": "sql-timeout",
+      "pass": true
+    },
+    {
+      "id": "case-06",
+      "expected": "sql-timeout",
+      "actual": "sql-timeout",
+      "pass": true
+    },
+    {
+      "id": "case-07",
+      "expected": "schema-mismatch",
+      "actual": "schema-mismatch",
+      "pass": true
+    },
+    {
+      "id": "case-08",
+      "expected": "schema-mismatch",
+      "actual": "schema-mismatch",
+      "pass": true
+    },
+    {
+      "id": "case-09",
+      "expected": "schema-mismatch",
+      "actual": "schema-mismatch",
+      "pass": true
+    },
+    {
+      "id": "case-10",
+      "expected": "ir-offline",
+      "actual": "ir-offline",
+      "pass": true
+    },
+    {
+      "id": "case-11",
+      "expected": "ir-offline",
+      "actual": "ir-offline",
+      "pass": true
+    },
+    {
+      "id": "case-12",
+      "expected": "ir-offline",
+      "actual": "ir-offline",
+      "pass": true
+    },
+    {
+      "id": "case-13",
+      "expected": "throttling",
+      "actual": "throttling",
+      "pass": true
+    },
+    {
+      "id": "case-14",
+      "expected": "throttling",
+      "actual": "throttling",
+      "pass": true
+    },
+    {
+      "id": "case-15",
+      "expected": "throttling",
+      "actual": "throttling",
+      "pass": true
+    },
+    {
+      "id": "case-16",
+      "expected": "duplicates",
+      "actual": "duplicates",
+      "pass": true
+    },
+    {
+      "id": "case-17",
+      "expected": "duplicates",
+      "actual": "duplicates",
+      "pass": true
+    },
+    {
+      "id": "case-18",
+      "expected": "duplicates",
+      "actual": "duplicates",
+      "pass": true
+    },
+    {
+      "id": "case-19",
+      "expected": "credential-expiry",
+      "actual": "credential-expiry",
+      "pass": true
+    },
+    {
+      "id": "case-20",
+      "expected": "credential-expiry",
+      "actual": "credential-expiry",
+      "pass": true
+    },
+    {
+      "id": "case-21",
+      "expected": "credential-expiry",
+      "actual": "credential-expiry",
+      "pass": true
+    },
+    {
+      "id": "case-22",
+      "expected": "function-failure",
+      "actual": "function-failure",
+      "pass": true
+    },
+    {
+      "id": "case-23",
+      "expected": "function-failure",
+      "actual": "function-failure",
+      "pass": true
+    },
+    {
+      "id": "case-24",
+      "expected": "function-failure",
+      "actual": "function-failure",
+      "pass": true
+    },
+    {
+      "id": "case-25",
+      "expected": null,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "id": "case-26",
+      "expected": null,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "id": "case-27",
+      "expected": null,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "id": "case-28",
+      "expected": null,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "id": "case-29",
+      "expected": null,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "id": "case-30",
+      "expected": null,
+      "actual": null,
+      "pass": true
+    }
+  ]
+}

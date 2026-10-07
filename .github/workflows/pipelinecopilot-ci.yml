@@ -1,0 +1,33 @@
+name: PipelineCopilot CI
+on:
+  push:
+    paths: ['pipelinecopilot/**', '.github/workflows/pipelinecopilot-ci.yml']
+  pull_request:
+    paths: ['pipelinecopilot/**', '.github/workflows/pipelinecopilot-ci.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  assistant:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    defaults:
+      run:
+        working-directory: pipelinecopilot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test retrieval, redaction, mocked LLM and HTTP boundaries
+        run: python -m unittest discover -s tests -v
+      - name: Evaluate all 30 curated cases
+        run: python -m pipelinecopilot evaluate
+      - name: Run synthetic scenarios
+        run: python -m pipelinecopilot demo
+      - name: Check Python and JavaScript syntax
+        run: |
+          python -m compileall -q pipelinecopilot tests
+          node --check pipelinecopilot/app.js

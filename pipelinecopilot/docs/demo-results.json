@@ -1,0 +1,63 @@
+[
+  {
+    "sample": "ADLS access denied",
+    "answer": {
+      "mode": "retrieval",
+      "status": "supported",
+      "summary": "Possible issue: ADLS storage authorization failure. Confirm with the checks below.",
+      "checks": [
+        "Identify the managed identity used by the linked service, then check its scoped storage data permissions.",
+        "For hierarchical namespace paths, inspect directory traversal and file access ACLs as well as RBAC.",
+        "Check storage firewall and private endpoint routing before changing permissions; do not grant broad Owner access."
+      ],
+      "citations": [
+        {
+          "id": "storage-access",
+          "title": "ADLS storage authorization failure",
+          "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control-model",
+          "score": 24.1976
+        }
+      ],
+      "redacted_log": "Pipeline: demo_bronze\nActivity: CopyTrips\nErrorCode: AuthorizationPermissionMismatch\nMessage: HTTP 403 forbidden. AccountKey=[REDACTED];",
+      "warning": null,
+      "elapsed_ms": 1.56
+    }
+  },
+  {
+    "sample": "CSV schema drift",
+    "answer": {
+      "mode": "retrieval",
+      "status": "supported",
+      "summary": "Possible issue: Copy activity schema or column mismatch. Confirm with the checks below.",
+      "checks": [
+        "Compare the current source schema with explicit Copy activity mappings and the sink schema.",
+        "Check delimiter, headers and sampled data types before regenerating mappings.",
+        "Test representative rows in a separate destination before applying schema changes to production."
+      ],
+      "citations": [
+        {
+          "id": "schema-mismatch",
+          "title": "Copy activity schema or column mismatch",
+          "url": "https://learn.microsoft.com/en-us/azure/data-factory/copy-activity-schema-and-type-mapping",
+          "score": 22.3313
+        }
+      ],
+      "redacted_log": "UserErrorInvalidColumnMappingColumnNotFound: source column trip_id is missing",
+      "warning": null,
+      "elapsed_ms": 0.12
+    }
+  },
+  {
+    "sample": "Unsupported question",
+    "answer": {
+      "mode": "retrieval",
+      "status": "insufficient_evidence",
+      "summary": "No sufficiently matching runbook. Provide the activity error code and a sanitised log.",
+      "checks": [],
+      "citations": [],
+      "redacted_log": "",
+      "warning": null,
+      "elapsed_ms": 0.05
+    }
+  }
+]

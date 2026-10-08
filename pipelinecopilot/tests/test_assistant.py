@@ -100,7 +100,7 @@ class ModelTests(unittest.TestCase):
         with patch.dict(os.environ,ENV,clear=True),patch('pipelinecopilot.llm.build_opener',return_value=opener):
             self.assertEqual(generate('SqlTimeout','',hits),answer)
         req=opener.open.call_args.args[0];body=json.loads(req.data)
-        self.assertEqual(req.full_url,ENV['PIPELINECOPILOT_AZURE_BASE_URL']+'/chat/completions');self.assertEqual(body['model'],'test-deployment')
+        self.assertEqual(req.full_url,ENV['PIPELINECOPILOT_AZURE_BASE_URL']+'/chat/completions');self.assertEqual(body['model'],'test-deployment');self.assertEqual(req.get_header('User-agent'),'JaswanthPortfolioVerification/1.0')
     def test_groq_request_uses_fixed_endpoint_and_bearer(self):
         hits=Assistant().index.search('SqlTimeout')
         answer={'summary':'Possible SQL timeout','checks':['Inspect query blocking'],'citation_ids':['sql-timeout']}

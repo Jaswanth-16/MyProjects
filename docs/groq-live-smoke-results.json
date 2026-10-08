@@ -6,26 +6,26 @@
     {
       "project": "LogLens",
       "case": "AuthorizationPermissionMismatch",
-      "pass": false,
-      "mode": "offline",
-      "warning": "Provider failed or output validation rejected it; showing the deterministic parser fallback.",
+      "pass": true,
+      "mode": "groq",
+      "warning": null,
       "usage": {
-        "input_tokens": 0,
-        "output_tokens": 0
+        "input_tokens": 516,
+        "output_tokens": 474
       },
-      "elapsed_seconds": 8.67
+      "elapsed_seconds": 9.93
     },
     {
       "project": "LogLens",
       "case": "SqlTimeout",
-      "pass": false,
-      "mode": "offline",
-      "warning": "Provider failed or output validation rejected it; showing the deterministic parser fallback.",
+      "pass": true,
+      "mode": "groq",
+      "warning": null,
       "usage": {
-        "input_tokens": 0,
-        "output_tokens": 0
+        "input_tokens": 515,
+        "output_tokens": 303
       },
-      "elapsed_seconds": 8.95
+      "elapsed_seconds": 5.85
     },
     {
       "project": "OpsEvidence",
@@ -34,29 +34,29 @@
       "mode": "offline",
       "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
       "metrics": {
-        "model_turns": 1,
-        "live_data_tool_calls": 0,
+        "model_turns": 3,
+        "live_data_tool_calls": 2,
         "usage": {
-          "input_tokens": 0,
-          "output_tokens": 0
+          "input_tokens": 3471,
+          "output_tokens": 114
         },
-        "elapsed_ms": 6923.01
+        "elapsed_ms": 18972.22
       }
     },
     {
       "project": "OpsEvidence",
       "case": "run-0420",
-      "pass": false,
-      "mode": "offline",
-      "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+      "pass": true,
+      "mode": "groq",
+      "warning": null,
       "metrics": {
-        "model_turns": 1,
-        "live_data_tool_calls": 0,
+        "model_turns": 4,
+        "live_data_tool_calls": 3,
         "usage": {
-          "input_tokens": 0,
-          "output_tokens": 0
+          "input_tokens": 4905,
+          "output_tokens": 1230
         },
-        "elapsed_ms": 10335.01
+        "elapsed_ms": 33369.1
       }
     },
     {
@@ -69,16 +69,12 @@
     {
       "project": "PipelineCopilot",
       "case": "AuthorizationPermissionMismatch",
-      "pass": false,
-      "mode": "retrieval",
-      "warning": "LLM unavailable or output rejected; showing the extractive runbook fallback."
+      "pass": true,
+      "mode": "llm",
+      "warning": null
     }
   ],
-  "diagnostic": {
-    "endpoint": "https://api.groq.com/openai/v1/models",
-    "http_status": 403,
-    "successful_live_cases": 0,
-    "reason": "Access denied response; account/provider/network cause not established",
-    "credential_in_report": false
-  }
+  "model": "openai/gpt-oss-20b",
+  "successful_live_cases": 4,
+  "initial_attempt": "Default urllib User-Agent received HTTP 403; explicit application User-Agent restored API access."
 }

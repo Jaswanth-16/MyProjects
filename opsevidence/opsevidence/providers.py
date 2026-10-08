@@ -50,6 +50,7 @@ class Client:
                 raise ProviderError('Use your Azure HTTPS endpoint ending /openai/v1')
             self.key=os.environ.get('AZURE_OPENAI_API_KEY','');self.model=os.environ.get('AZURE_OPENAI_DEPLOYMENT','')
             self.url=base+'/chat/completions';self.headers={'api-key':self.key}
+        self.headers['User-Agent']='JaswanthPortfolioVerification/1.0'
         if not self.key or not self.model:raise ProviderError('Provider API key and model/deployment name are required')
 
     def step(self, system, messages, tools, force=None):

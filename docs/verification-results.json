@@ -29,12 +29,12 @@
     "replay": "skipped"
   },
   "live_ai": {
-    "status": "blocked_by_http_403",
+    "status": "partial_pass",
     "provider": "groq",
     "model": "openai/gpt-oss-20b",
     "cases_attempted": 6,
-    "successful_live_cases": 0,
-    "reason": "HTTP 403; account/provider/network cause not established",
+    "successful_live_cases": 4,
+    "reason": "Application User-Agent resolved HTTP 403. OpsEvidence run-0408 and PipelineCopilot SqlTimeout rejected live output and fell back.",
     "details": "groq-live-smoke-results.json"
   },
   "azure_deployment": "not_executed",

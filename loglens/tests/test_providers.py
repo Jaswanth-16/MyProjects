@@ -24,6 +24,7 @@ class ProviderTests(unittest.TestCase):
                 else:self.assertEqual(messages[-1]['tool_call_id'],'c1')
                 self.assertEqual(client.usage,{'input_tokens':10,'output_tokens':5})
                 self.assertEqual(client.requests,1)
+                self.assertEqual(client.headers['User-Agent'],'JaswanthPortfolioVerification/1.0')
                 if provider=='groq':
                     self.assertEqual(client.url,'https://api.groq.com/openai/v1/chat/completions')
                     self.assertEqual(client.headers['Authorization'],'Bearer test-only')

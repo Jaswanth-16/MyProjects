@@ -26,7 +26,7 @@ The local cached Bicep executable could not run because its bundle was corrupt. 
 | [Power BI Desktop](https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop) | Windows and free Desktop installation | Local CSV imports, model relationships, DAX and View as role | Not available in this Linux environment; no completed PBIX is supplied; sharing/licensing differs |
 | [Gemini Developer API](https://ai.google.dev/gemini-api/docs/pricing) | Own account/key and an eligible free-tier model | Another possible free model evaluation route | Not integrated here; model/region quotas apply; cannot substitute for provider-specific Azure/Claude tests |
 
-A user-supplied key was used transiently for the strict Groq smoke suite with `openai/gpt-oss-20b`. Six cases attempted real requests, but none passed live inference: responses fell back, and a separate models-endpoint diagnostic returned **HTTP 403**. The account/provider/network cause is not established. No live AI success is claimed. The key was not committed, saved in this report or embedded in the presentation. See [sanitised live results](docs/groq-live-smoke-results.json). Trial/promotional cloud credits may depend on eligibility; no paid subscription was created or upgraded.
+A user-supplied key was used transiently with `openai/gpt-oss-20b`. An initial HTTP 403 was resolved by adding an explicit application User-Agent to the adapters. The rerun passed **4 of 6 live smoke cases**: both LogLens examples, OpsEvidence run-0420 and PipelineCopilot AuthorizationPermissionMismatch. OpsEvidence run-0408 and PipelineCopilot SqlTimeout rejected live output and used labelled offline fallbacks; these count as failures, not live successes. This small synthetic suite does not establish general answer accuracy. The key was not committed or embedded in the presentation. See [sanitised live results](docs/groq-live-smoke-results.json).
 
 ## Run the free-plan AI smoke suite
 
@@ -88,4 +88,4 @@ On Linux, `npx playwright install --with-deps chromium` may be required. Browser
 
 ## Work still needed before a production claim
 
-Run the live suite with an account-owned key, evaluate outputs against a reviewed held-out set, and test actual Azure and Claude services when credentials are available. For TransitPulse, execute the Azure deployment with identity/access checks and validate the Power BI model on Windows. Production load testing, cross-user authorization, durable telemetry and independent security review are not covered by this portfolio suite.
+Resolve the two remaining live smoke failures, evaluate outputs against a reviewed held-out set, and test actual Azure and Claude services when credentials are available. For TransitPulse, execute the Azure deployment with identity/access checks and validate the Power BI model on Windows. Production load testing, cross-user authorization, durable telemetry and independent security review are not covered by this portfolio suite.

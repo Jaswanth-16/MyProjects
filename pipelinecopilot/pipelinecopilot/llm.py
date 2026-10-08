@@ -45,7 +45,7 @@ def generate(question, log, hits, provider='azure'):
             {'role': 'user', 'content': json.dumps({'question': question, 'sanitised_log': log, 'evidence': evidence})}],
             'response_format': {'type': 'json_object'}, 'max_completion_tokens': 800}
     request = Request(base + '/chat/completions', data=json.dumps(body).encode(),
-                      headers={'Content-Type': 'application/json', **({'Authorization':'Bearer '+key} if provider=='groq' else {'api-key':key})}, method='POST')
+                      headers={'Content-Type': 'application/json', 'User-Agent':'JaswanthPortfolioVerification/1.0', **({'Authorization':'Bearer '+key} if provider=='groq' else {'api-key':key})}, method='POST')
     try:
         with build_opener(NoRedirect()).open(request, timeout=25) as response:
             raw = response.read(65537)

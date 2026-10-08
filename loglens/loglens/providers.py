@@ -1,4 +1,4 @@
-"""Provider-neutral tool calling for Azure OpenAI v1 and Claude Messages.
+"""Provider-neutral tool calling for Azure OpenAI v1, Claude Messages and Groq.
 
 The HTTP boundary is injectable in tests. No paid request in offline mode.
 """
@@ -29,13 +29,17 @@ def http_post(url, headers, payload):
 
 class Client:
     def __init__(self, provider, transport=http_post):
-        if provider not in {'azure','claude'}:raise ProviderError('Choose azure or claude')
+        if provider not in {'azure','claude','groq'}:raise ProviderError('Choose azure, claude or groq')
         self.provider=provider;self.transport=transport
         self.requests=0;self.usage={'input_tokens':0,'output_tokens':0}
         if provider=='claude':
             self.key=os.environ.get('ANTHROPIC_API_KEY','');self.model=os.environ.get('ANTHROPIC_MODEL','')
             self.url='https://api.anthropic.com/v1/messages'
             self.headers={'x-api-key':self.key,'anthropic-version':'2023-06-01'}
+        elif provider=='groq':
+            self.key=os.environ.get('GROQ_API_KEY','');self.model=os.environ.get('GROQ_MODEL','')
+            self.url='https://api.groq.com/openai/v1/chat/completions'
+            self.headers={'Authorization':'Bearer '+self.key}
         else:
             base=os.environ.get('AZURE_OPENAI_BASE_URL','').rstrip('/')
             try:u=urlsplit(base);port=u.port

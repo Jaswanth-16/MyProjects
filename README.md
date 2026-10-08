@@ -17,13 +17,13 @@ optional Azure Data Factory, ADLS Gen2 and Azure Functions deployment path.
 
 A Python troubleshooting assistant with a local web interface, eight Azure pipeline runbooks,
 BM25/error-code retrieval and an optional Azure OpenAI RAG adapter. Includes credential redaction,
-citation validation, extractive fallback, 39 tests and a transparent 30-case retrieval benchmark.
+citation validation, extractive fallback, 41 tests and a transparent 30-case retrieval benchmark.
 
 [Run the demo](pipelinecopilot/) · [Architecture](pipelinecopilot/docs/architecture.md) · [Interview guide](pipelinecopilot/docs/portfolio-guide.md)
 
 ### [LogLens — Beginner AI Log Summariser](loglens/)
 
-Start here: structured pipeline-log extraction, numbered evidence, Azure OpenAI and Claude adapters, an offline demo and 18 tests.
+Start here: structured pipeline-log extraction, numbered evidence, Azure OpenAI and Claude adapters, an offline demo and 19 tests.
 
 [Run LogLens](loglens/) · [Study guide](loglens/docs/study-guide.md)
 
@@ -32,3 +32,5 @@ Start here: structured pipeline-log extraction, numbered evidence, Azure OpenAI 
 A certification study capstone with 420 synthetic runs, scoped SQLite tools, BM25 runbooks, a bounded Azure/Claude tool loop, validated citations and 24 tests.
 
 [Run OpsEvidence](opsevidence/) · [Study guide](opsevidence/docs/study-guide.md) · [Certification mapping](opsevidence/docs/certification-map.md)
+
+[Testing coverage, free alternatives and remaining gaps](TESTING.md)

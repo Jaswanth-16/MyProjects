@@ -14,7 +14,7 @@ python -m loglens serve
 
 Open http://127.0.0.1:8766. On Windows, use `py` instead of `python` if needed. Ctrl+C stops the server. Run all commands from this project folder so Python finds the package.
 
-Offline mode is a deterministic learning demo, **not model inference**. Optional Azure OpenAI and Claude modes are implemented; [configure a provider](docs/providers.md) to make live calls with your credentials.
+Offline mode is a deterministic learning demo, **not model inference**. Optional Azure OpenAI, Claude and free-plan Groq modes are implemented; [configure a provider](docs/providers.md) to make live calls with your credentials.
 
 ## What you can study
 
@@ -30,7 +30,7 @@ python -m unittest discover -s tests -v
 python -m compileall -q loglens
 ```
 
-18 tests cover offline behavior, validation, mocked provider protocols and real local HTTP requests. GitHub Actions runs both Python versions. Checked-in [demo output](docs/demo-results.json) shows synthetic/offline behavior, not an independent benchmark of AI accuracy.
+19 tests cover offline behavior, validation, mocked provider protocols and real local HTTP requests. GitHub Actions runs both Python versions. Checked-in [demo output](docs/demo-results.json) shows synthetic/offline behavior, not an independent benchmark of AI accuracy.
 
 [Study walkthrough](docs/study-guide.md) · [Certification mapping](docs/certification-map.md) · [Optional providers](docs/providers.md)
 

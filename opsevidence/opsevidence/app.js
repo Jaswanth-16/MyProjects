@@ -2,7 +2,7 @@
 const el = id => document.getElementById(id);
 async function setup(){
  const r=await fetch('/api/options');if(!r.ok)throw new Error('Unable to load options');const data=await r.json();
- el('provider').textContent=`Mode: ${data.provider} · ${data.provider==='offline'?'no model calls':'paid provider calls enabled'}`;
+ el('provider').textContent=`Mode: ${data.provider} · ${data.provider==='offline'?'no model calls':'live provider calls enabled · check your plan limits'}`;
  if(data.incidents){for(const row of data.incidents){const o=document.createElement('option');o.value=row.id;o.textContent=`${row.id} · ${row.pipeline} · ${row.error_code}`;el('incident').append(o);}}
 }
 setup().catch(e=>{el('warning').textContent=e.message;el('run').disabled=true;});

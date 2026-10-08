@@ -14,7 +14,7 @@ python -m opsevidence serve
 
 Open http://127.0.0.1:8767. On Windows, use `py` instead of `python` if needed. Ctrl+C stops the server. Run all commands from this project folder so Python finds the package.
 
-Offline mode is a deterministic learning demo, **not model inference**. Optional Azure OpenAI and Claude modes are implemented; [configure a provider](docs/providers.md) to make live calls with your credentials.
+Offline mode is a deterministic learning demo, **not model inference**. Optional Azure OpenAI, Claude and free-plan Groq modes are implemented; [configure a provider](docs/providers.md) to make live calls with your credentials.
 
 ## What you can study
 

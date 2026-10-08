@@ -10,3 +10,7 @@ transitpulse/workspace*/
 transitpulse/dist/
 transitpulse/azure/parameters.local.json
 .DS_Store
+
+node_modules/
+test-results/
+playwright-report/

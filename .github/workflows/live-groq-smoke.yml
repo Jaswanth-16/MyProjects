@@ -1,0 +1,25 @@
+name: Opt-in live Groq smoke tests
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Tool-capable model available on your Groq Free plan
+        required: true
+        default: openai/gpt-oss-20b
+        type: string
+permissions:
+  contents: read
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test real inference; missing credentials and fallbacks fail explicitly
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: ${{ inputs.model }}
+        run: python scripts/live_ai_smoke.py --provider groq --interval 15

@@ -95,12 +95,25 @@ class ModelTests(unittest.TestCase):
     def test_adapter_request_and_valid_response(self):
         hits=Assistant().index.search('SqlTimeout')
         answer={'summary':'Possible SQL timeout','checks':['Inspect query blocking'],'citation_ids':['sql-timeout']}
-        envelope={'choices':[{'message':{'content':json.dumps(answer)}}]}
+        envelope={'choices':[{'finish_reason':'stop','message':{'content':json.dumps(answer)}}]}
         opener=MagicMock();opener.open.return_value.__enter__.return_value.read.return_value=json.dumps(envelope).encode()
         with patch.dict(os.environ,ENV,clear=True),patch('pipelinecopilot.llm.build_opener',return_value=opener):
             self.assertEqual(generate('SqlTimeout','',hits),answer)
         req=opener.open.call_args.args[0];body=json.loads(req.data)
         self.assertEqual(req.full_url,ENV['PIPELINECOPILOT_AZURE_BASE_URL']+'/chat/completions');self.assertEqual(body['model'],'test-deployment')
+    def test_groq_request_uses_fixed_endpoint_and_bearer(self):
+        hits=Assistant().index.search('SqlTimeout')
+        answer={'summary':'Possible SQL timeout','checks':['Inspect query blocking'],'citation_ids':['sql-timeout']}
+        envelope={'choices':[{'finish_reason':'stop','message':{'content':json.dumps(answer)}}]}
+        opener=MagicMock();opener.open.return_value.__enter__.return_value.read.return_value=json.dumps(envelope).encode()
+        with patch.dict(os.environ,{'GROQ_API_KEY':'fake-key','GROQ_MODEL':'test-model'},clear=True),patch('pipelinecopilot.llm.build_opener',return_value=opener):
+            result=Assistant(use_llm=True,provider='groq').ask({'question':'SqlTimeout'})
+        self.assertEqual(result['mode'],'llm');req=opener.open.call_args.args[0]
+        self.assertEqual(req.full_url,'https://api.groq.com/openai/v1/chat/completions')
+        self.assertEqual(req.get_header('Authorization'),'Bearer fake-key')
+    def test_truncated_response_is_rejected(self):
+        opener=MagicMock();opener.open.return_value.__enter__.return_value.read.return_value=json.dumps({'choices':[{'finish_reason':'length','message':{'content':'{}'}}]}).encode()
+        with patch.dict(os.environ,ENV,clear=True),patch('pipelinecopilot.llm.build_opener',return_value=opener),self.assertRaises(ModelError):generate('SqlTimeout','',Assistant().index.search('SqlTimeout'))
     def test_provider_failure_falls_back_without_error_details(self):
         with patch('pipelinecopilot.core.generate',side_effect=ModelError('SECRET_ERROR')):
             r=Assistant(use_llm=True).ask({'question':'SqlTimeout'})

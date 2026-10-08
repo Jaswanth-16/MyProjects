@@ -1,0 +1,47 @@
+name: Free integration verification
+on:
+  push:
+    paths: ['transitpulse/**', 'pipelinecopilot/**', 'loglens/**', 'opsevidence/**', 'tests/browser/**', 'package*.json', 'scripts/live_ai_smoke.py', '.github/workflows/free-integration-ci.yml']
+  pull_request:
+    paths: ['transitpulse/**', 'pipelinecopilot/**', 'loglens/**', 'opsevidence/**', 'tests/browser/**', 'package*.json', 'scripts/live_ai_smoke.py', '.github/workflows/free-integration-ci.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+  azurite:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: transitpulse
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install -r requirements.txt
+      - run: npm install --prefix /tmp/azurite-tools azurite@3.37.0 --ignore-scripts --no-audit --no-fund
+      - name: Real local Blob SDK integration, telemetry disabled
+        shell: bash
+        run: |
+          /tmp/azurite-tools/node_modules/.bin/azurite-blob --blobHost 127.0.0.1 --blobPort 10000 --location /tmp/azurite-data --silent --skipApiVersionCheck --disableTelemetry > /tmp/azurite.log 2>&1 &
+          emulator_pid=$!
+          trap 'kill "$emulator_pid"' EXIT
+          python -c "import socket,time; [(time.sleep(.2)) for _ in range(25) if socket.socket().connect_ex(('127.0.0.1',10000)) != 0]"
+          TRANSITPULSE_TEST_AZURITE=1 python -m unittest discover -s integration -v

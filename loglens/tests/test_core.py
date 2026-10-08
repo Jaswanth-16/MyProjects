@@ -32,3 +32,10 @@ class CoreTests(unittest.TestCase):
         result=analyse('SqlTimeout','claude',Broken())
         self.assertEqual(result['mode'],'offline');self.assertEqual(result['usage']['input_tokens'],20)
         self.assertNotIn('private provider detail',result['warning'])
+    def test_valid_live_output_for_all_three_providers(self):
+        import test_providers
+        helper=test_providers.ProviderTests();text='pipeline: demo\nactivity: copy\nSqlTimeout';answer=offline_extract(numbered(text))
+        for provider in ['azure','claude','groq']:
+            client=helper.client(provider,lambda *a:helper.response(provider,[{'id':'summary','name':'emit_summary','arguments':answer}]))
+            result=analyse(text,provider,client)
+            self.assertEqual(result['mode'],provider);self.assertIsNone(result['warning']);self.assertEqual(result['summary'],answer)

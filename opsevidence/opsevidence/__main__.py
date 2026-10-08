@@ -7,8 +7,8 @@ def main():
     p=argparse.ArgumentParser(description='OpsEvidence: bounded read-only incident agent lab')
     sub=p.add_subparsers(dest='command',required=True)
     sub.add_parser('list');sub.add_parser('demo')
-    a=sub.add_parser('investigate');a.add_argument('incident_id');a.add_argument('--question',default='What failed, what does the history show, and what should I check?');a.add_argument('--provider',choices=['offline','azure','claude'],default='offline')
-    s=sub.add_parser('serve');s.add_argument('--port',type=int,default=8767);s.add_argument('--provider',choices=['offline','azure','claude'],default='offline')
+    a=sub.add_parser('investigate');a.add_argument('incident_id');a.add_argument('--question',default='What failed, what does the history show, and what should I check?');a.add_argument('--provider',choices=['offline','azure','claude','groq'],default='offline')
+    s=sub.add_parser('serve');s.add_argument('--port',type=int,default=8767);s.add_argument('--provider',choices=['offline','azure','claude','groq'],default='offline')
     args=p.parse_args()
     if args.command=='serve':
         from .server import serve

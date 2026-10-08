@@ -39,7 +39,7 @@ queried or changed. Server input is not stored, and request logging is disabled.
 | Mode | Implementation | Credentials / network |
 |---|---|---|
 | Retrieval, default | BM25 lexical search, exact error-code boost, curated extractive checks | None; works offline |
-| LLM, opt-in | Retrieved context + sanitised logs sent to Azure OpenAI v1; structured answer with validated citation IDs | Your Azure deployment and API key; requests may incur charges |
+| LLM, opt-in | Retrieved context + sanitised logs sent to Azure OpenAI v1 or opt-in Groq; structured answer with validated citation IDs | Your Azure deployment and API key; requests may incur charges |
 
 The default mode **does not generate AI text**. The optional adapter makes this a RAG application;
 retrieval is lexical, not embedding/vector search. Azure AI Search is a possible future replacement
@@ -91,7 +91,7 @@ verification, not a claim that every sentence is a quotation or proven diagnosis
 
 ## Measured local results
 
-- **39 automated tests passed**, including real loopback HTTP requests and mocked provider transport.
+- **41 automated tests passed**, including real loopback HTTP requests and mocked provider transport.
 - **30 curated evaluation cases:** correct first runbook for 24/24 supported questions; abstention on 6/6 unrelated questions.
 - Three reproducible sample scenarios, including log redaction and insufficient evidence.
 
@@ -120,3 +120,14 @@ monitoring and a proper application server.
 
 - [Design decisions, code walkthrough and limits](docs/architecture.md)
 - [Interview preparation and honest resume wording](docs/portfolio-guide.md)
+
+## Free-plan live testing with Groq
+
+Set `GROQ_API_KEY` and `GROQ_MODEL` in your terminal using your own [Groq Free-plan account](https://console.groq.com/keys). Choose a current model that supports JSON mode; stay within [model-specific free rate limits](https://console.groq.com/docs/rate-limits).
+
+```bash
+python -m pipelinecopilot serve --llm --provider groq
+python -m pipelinecopilot ask "SqlTimeout during ingestion" --llm --provider groq
+```
+
+The Groq adapter uses the fixed OpenAI-compatible endpoint and bearer authentication, with the same output/citation validator and labelled fallback as Azure. Incomplete (`length`) responses are rejected. A Groq success does not demonstrate Azure deployment or Azure model behavior. See the repository [testing report](../TESTING.md) and strict live smoke command there. Keys are never bundled or printed.

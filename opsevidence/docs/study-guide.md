@@ -28,7 +28,7 @@ Offline mode replays get_run, seven-day statistics and error-code retrieval in a
 
 ## 3. Inspect the protocol
 
-Read `providers.py` and the `test_live_two_provider_tool_loop` test. Azure appends assistant tool calls followed by one role=tool message per call ID. Claude appends assistant tool_use blocks followed immediately by a user message containing matching tool_result blocks. Multiple tool requests receive grouped results. Duplicate IDs, truncation and malformed responses are rejected.
+Read `providers.py` and the `test_live_three_provider_tool_loop` test. Azure appends assistant tool calls followed by one role=tool message per call ID. Claude appends assistant tool_use blocks followed immediately by a user message containing matching tool_result blocks. Multiple tool requests receive grouped results. Duplicate IDs, truncation and malformed responses are rejected.
 
 ## 4. Exercises
 

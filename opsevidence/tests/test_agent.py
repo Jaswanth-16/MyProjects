@@ -47,11 +47,11 @@ class AgentTests(unittest.TestCase):
             answer=offline_plan(tools);answer['next_checks'][0]['citations']=answer['observations'][0]['citations']
             with self.assertRaises(ContractError):validate_answer(answer,tools.evidence)
         finally:tools.close()
-    def test_live_two_provider_tool_loop(self):
+    def test_live_three_provider_tool_loop(self):
         helper=test_providers.ProviderTests();tools=Tools('run-0420')
         try:final=offline_plan(tools)
         finally:tools.close()
-        for provider in ['azure','claude']:
+        for provider in ['azure','claude','groq']:
             with self.subTest(provider=provider):
                 payloads=[]
                 def transport(url,headers,payload):
@@ -62,7 +62,7 @@ class AgentTests(unittest.TestCase):
                 self.assertEqual(result['mode'],provider);self.assertEqual(result['metrics']['model_turns'],2)
                 self.assertEqual(result['metrics']['live_data_tool_calls'],3)
                 messages=payloads[1]['messages']
-                self.assertEqual(sum(m['role']=='tool'for m in messages),3 if provider=='azure'else 0)
+                self.assertEqual(sum(m['role']=='tool'for m in messages),0 if provider=='claude'else 3)
                 if provider=='claude':self.assertEqual(len(messages[-1]['content']),3)
     def test_premature_final_falls_back(self):
         helper=test_providers.ProviderTests()

@@ -8,8 +8,8 @@ def main():
     p=argparse.ArgumentParser(description='LogLens: beginner structured extraction lab')
     sub=p.add_subparsers(dest='command',required=True)
     sub.add_parser('demo')
-    a=sub.add_parser('analyse');a.add_argument('log',type=Path);a.add_argument('--provider',choices=['offline','azure','claude'],default='offline')
-    s=sub.add_parser('serve');s.add_argument('--port',type=int,default=8766);s.add_argument('--provider',choices=['offline','azure','claude'],default='offline')
+    a=sub.add_parser('analyse');a.add_argument('log',type=Path);a.add_argument('--provider',choices=['offline','azure','claude','groq'],default='offline')
+    s=sub.add_parser('serve');s.add_argument('--port',type=int,default=8766);s.add_argument('--provider',choices=['offline','azure','claude','groq'],default='offline')
     args=p.parse_args()
     if args.command=='serve':
         from .server import serve

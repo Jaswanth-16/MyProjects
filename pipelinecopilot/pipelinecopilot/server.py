@@ -53,10 +53,10 @@ def handler_for(assistant, port):
                 self.send(408, b'{"error":"Request timed out"}')
     return Handler
 
-def serve(port=8765, use_llm=False):
+def serve(port=8765, use_llm=False, provider='azure'):
     if not 1024 <= port <= 65535:
         raise ValueError('Use a port between 1024 and 65535')
-    server = ThreadingHTTPServer(('127.0.0.1', port), handler_for(Assistant(use_llm=use_llm), port))
+    server = ThreadingHTTPServer(('127.0.0.1', port), handler_for(Assistant(use_llm=use_llm,provider=provider), port))
     print(f'Open http://127.0.0.1:{port} | LLM: {use_llm} | Ctrl+C to stop', flush=True)
     try:
         server.serve_forever()

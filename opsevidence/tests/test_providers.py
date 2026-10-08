@@ -6,13 +6,13 @@ from opsevidence.safety import clean_text
 
 class ProviderTests(unittest.TestCase):
     def client(self,provider,transport):
-        env={'ANTHROPIC_API_KEY':'test-only','ANTHROPIC_MODEL':'test-model','AZURE_OPENAI_BASE_URL':'https://example.openai.azure.com/openai/v1','AZURE_OPENAI_API_KEY':'test-only','AZURE_OPENAI_DEPLOYMENT':'test-deployment'}
+        env={'GROQ_API_KEY':'test-only','GROQ_MODEL':'test-model','ANTHROPIC_API_KEY':'test-only','ANTHROPIC_MODEL':'test-model','AZURE_OPENAI_BASE_URL':'https://example.openai.azure.com/openai/v1','AZURE_OPENAI_API_KEY':'test-only','AZURE_OPENAI_DEPLOYMENT':'test-deployment'}
         with patch.dict(os.environ,env):return Client(provider,transport)
     def response(self,provider,calls,finish=True):
         if provider=='claude':return {'stop_reason':'tool_use' if finish else 'max_tokens','content':[{'type':'tool_use','id':c['id'],'name':c['name'],'input':c['arguments']}for c in calls],'usage':{'input_tokens':10,'output_tokens':5}}
         return {'choices':[{'finish_reason':'tool_calls' if finish else 'length','message':{'content':None,'tool_calls':[{'id':c['id'],'type':'function','function':{'name':c['name'],'arguments':json.dumps(c['arguments'])}}for c in calls]}}],'usage':{'prompt_tokens':10,'completion_tokens':5}}
     def test_provider_round_trip(self):
-        for provider in ['azure','claude']:
+        for provider in ['azure','claude','groq']:
             with self.subTest(provider=provider):
                 seen=[];call={'id':'c1','name':'read','arguments':{'days':7}}
                 def transport(url,headers,payload):seen.append(payload);return self.response(provider,[call])
@@ -24,13 +24,16 @@ class ProviderTests(unittest.TestCase):
                 else:self.assertEqual(messages[-1]['tool_call_id'],'c1')
                 self.assertEqual(client.usage,{'input_tokens':10,'output_tokens':5})
                 self.assertEqual(client.requests,1)
+                if provider=='groq':
+                    self.assertEqual(client.url,'https://api.groq.com/openai/v1/chat/completions')
+                    self.assertEqual(client.headers['Authorization'],'Bearer test-only')
     def test_truncation_rejected(self):
-        for provider in ['azure','claude']:
+        for provider in ['azure','claude','groq']:
             client=self.client(provider,lambda *a:self.response(provider,[{'id':'c','name':'read','arguments':{}}],False))
             with self.assertRaises(ProviderError):client.step('s',[],[])
     def test_duplicate_call_ids_rejected(self):
         call={'id':'same','name':'read','arguments':{}}
-        for provider in ['azure','claude']:
+        for provider in ['azure','claude','groq']:
             client=self.client(provider,lambda *a:self.response(provider,[call,call]))
             with self.assertRaises(ProviderError):client.step('s',[],[])
     def test_malformed_response_rejected(self):

@@ -14,3 +14,11 @@ Start `python -m loglens serve --provider azure` or `--provider claude` from the
 The Azure adapter uses the v1 chat-completions endpoint, `tools`, `tool_choice` and tool-result messages. The Claude adapter uses Messages, `input_schema`, `tool_use` and matching `tool_result` blocks. Tests inject transport responses to verify both protocols; live inference has not been tested with paid credentials.
 
 Sources: [Azure function calling](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/function-calling), [Claude handling tool calls](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls).
+
+## Free-plan alternative: Groq
+
+Create your own account and API key at https://console.groq.com/keys, stay on the Free plan, and choose a currently available tool-capable model from https://console.groq.com/docs/models. Set `GROQ_API_KEY` and `GROQ_MODEL`, then run `python -m loglens serve --provider groq`. The adapter uses the fixed `https://api.groq.com/openai/v1/chat/completions` endpoint and bearer authentication. No SDK installation is needed.
+
+[Free-plan rate limits](https://console.groq.com/docs/rate-limits) vary by model and account. Quota failures are visibly labelled; there are no automatic retries. A successful Groq test checks the application flow with a Groq-hosted model. It does not validate Claude model quality, Azure deployment access, Azure identity or either provider's service behavior. Never use someone else's published key.
+
+Run the strict live smoke suite from the repository root with `python scripts/live_ai_smoke.py --provider groq`. Missing credentials are reported as blocked; fallbacks fail the live check instead of being counted as successful inference.

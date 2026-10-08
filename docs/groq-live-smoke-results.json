@@ -1,0 +1,84 @@
+{
+  "provider": "groq",
+  "status": "fail",
+  "scope": "Small synthetic smoke suite; not a semantic quality or production accuracy benchmark",
+  "results": [
+    {
+      "project": "LogLens",
+      "case": "AuthorizationPermissionMismatch",
+      "pass": false,
+      "mode": "offline",
+      "warning": "Provider failed or output validation rejected it; showing the deterministic parser fallback.",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "elapsed_seconds": 8.67
+    },
+    {
+      "project": "LogLens",
+      "case": "SqlTimeout",
+      "pass": false,
+      "mode": "offline",
+      "warning": "Provider failed or output validation rejected it; showing the deterministic parser fallback.",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "elapsed_seconds": 8.95
+    },
+    {
+      "project": "OpsEvidence",
+      "case": "run-0408",
+      "pass": false,
+      "mode": "offline",
+      "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+      "metrics": {
+        "model_turns": 1,
+        "live_data_tool_calls": 0,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 6923.01
+      }
+    },
+    {
+      "project": "OpsEvidence",
+      "case": "run-0420",
+      "pass": false,
+      "mode": "offline",
+      "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+      "metrics": {
+        "model_turns": 1,
+        "live_data_tool_calls": 0,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 10335.01
+      }
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "SqlTimeout",
+      "pass": false,
+      "mode": "retrieval",
+      "warning": "LLM unavailable or output rejected; showing the extractive runbook fallback."
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "AuthorizationPermissionMismatch",
+      "pass": false,
+      "mode": "retrieval",
+      "warning": "LLM unavailable or output rejected; showing the extractive runbook fallback."
+    }
+  ],
+  "diagnostic": {
+    "endpoint": "https://api.groq.com/openai/v1/models",
+    "http_status": 403,
+    "successful_live_cases": 0,
+    "reason": "Access denied response; account/provider/network cause not established",
+    "credential_in_report": false
+  }
+}

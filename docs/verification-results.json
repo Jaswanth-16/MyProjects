@@ -1,13 +1,42 @@
 {
   "date": "2026-10-08",
   "scope": "Synthetic portfolio tests; no claim of production readiness or general model accuracy",
-  "unit_and_http_suites": {"transitpulse": 31, "pipelinecopilot": 41, "loglens": 19, "opsevidence": 24},
-  "azurite_integration_tests": {"passed": 4, "telemetry": "disabled", "scope": "real loopback Blob SDK requests, not Azure deployment"},
-  "chromium_browser_checks": {"passed": 12, "playwright": "1.64.0", "chromium": "153", "web_security": "enabled"},
+  "unit_and_http_suites": {
+    "transitpulse": 31,
+    "pipelinecopilot": 41,
+    "loglens": 19,
+    "opsevidence": 24
+  },
+  "azurite_integration_tests": {
+    "passed": 4,
+    "telemetry": "disabled",
+    "scope": "real loopback Blob SDK requests, not Azure deployment"
+  },
+  "chromium_browser_checks": {
+    "passed": 12,
+    "playwright": "1.64.0",
+    "chromium": "153",
+    "web_security": "enabled"
+  },
   "total_passing_checks": 131,
-  "pipelinecopilot_curated_retrieval_cases": {"passed": 30, "total": 30},
-  "transitpulse_demo": {"initial_trips": 10000, "unique_trips": 10200, "replay": "skipped"},
-  "live_ai": {"status": "blocked", "reason": "missing GROQ_API_KEY and GROQ_MODEL", "calls": 0},
+  "pipelinecopilot_curated_retrieval_cases": {
+    "passed": 30,
+    "total": 30
+  },
+  "transitpulse_demo": {
+    "initial_trips": 10000,
+    "unique_trips": 10200,
+    "replay": "skipped"
+  },
+  "live_ai": {
+    "status": "blocked_by_http_403",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "cases_attempted": 6,
+    "successful_live_cases": 0,
+    "reason": "HTTP 403; account/provider/network cause not established",
+    "details": "groq-live-smoke-results.json"
+  },
   "azure_deployment": "not_executed",
   "power_bi_runtime": "not_executed",
   "local_bicep_compile": "blocked_by_corrupt_cached_binary; covered separately by GitHub CI"

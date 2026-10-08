@@ -20,3 +20,15 @@ BM25/error-code retrieval and an optional Azure OpenAI RAG adapter. Includes cre
 citation validation, extractive fallback, 39 tests and a transparent 30-case retrieval benchmark.
 
 [Run the demo](pipelinecopilot/) · [Architecture](pipelinecopilot/docs/architecture.md) · [Interview guide](pipelinecopilot/docs/portfolio-guide.md)
+
+### [LogLens — Beginner AI Log Summariser](loglens/)
+
+Start here: structured pipeline-log extraction, numbered evidence, Azure OpenAI and Claude adapters, an offline demo and 18 tests.
+
+[Run LogLens](loglens/) · [Study guide](loglens/docs/study-guide.md)
+
+### [OpsEvidence — Read-only Incident Agent](opsevidence/)
+
+A certification study capstone with 420 synthetic runs, scoped SQLite tools, BM25 runbooks, a bounded Azure/Claude tool loop, validated citations and 24 tests.
+
+[Run OpsEvidence](opsevidence/) · [Study guide](opsevidence/docs/study-guide.md) · [Certification mapping](opsevidence/docs/certification-map.md)

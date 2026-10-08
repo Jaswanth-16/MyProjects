@@ -1,0 +1,4 @@
+Pipeline: silver_metrics
+Activity: CopyMetrics
+ErrorCode: UserErrorInvalidColumnMappingColumnNotFound
+Message: Column passenger_count no longer exists in the CSV header.

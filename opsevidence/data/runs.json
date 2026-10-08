@@ -1,0 +1,4202 @@
+[
+  {
+    "id": "run-0001",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-10T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 507,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0002",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-10T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 54,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0003",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-10T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 43,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0004",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-10T01:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 320,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0005",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-10T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 71,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0006",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-10T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 68,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0007",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-10T02:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 251,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0008",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-10T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 134,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0009",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-10T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 53,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0010",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-10T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 459,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0011",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-10T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 51,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0012",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-10T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 115,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0013",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-10T04:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 396,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0014",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-10T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 44,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0015",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-10T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 43,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0016",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-11T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 51,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0017",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-11T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 67,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0018",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-11T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 69,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0019",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-11T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 104,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0020",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-11T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 117,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0021",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-11T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 43,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0022",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-11T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 111,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0023",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-11T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 65,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0024",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-11T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 131,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0025",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-11T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 123,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0026",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-11T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 129,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0027",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-11T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 109,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0028",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-11T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 93,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0029",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-11T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 68,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0030",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-11T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 97,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0031",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-12T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 481,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0032",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-12T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 75,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0033",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-12T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 143,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0034",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-12T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 151,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0035",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-12T07:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 183,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0036",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-12T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 137,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0037",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-12T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 143,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0038",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-12T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 60,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0039",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-12T14:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 396,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0040",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-12T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 83,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0041",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-12T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 75,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0042",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-12T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 59,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0043",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-12T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 67,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0044",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-12T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 137,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0045",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-12T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 83,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0046",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-13T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 53,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0047",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-13T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 51,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0048",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-13T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 88,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0049",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-13T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 52,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0050",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-13T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 85,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0051",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-13T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 148,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0052",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-13T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 84,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0053",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-13T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 117,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0054",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-13T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 73,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0055",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-13T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 202,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0056",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-13T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 133,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0057",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-13T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 98,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0058",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-13T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 108,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0059",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-13T10:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 243,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0060",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-13T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 158,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0061",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-14T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 373,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0062",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-14T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 50,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0063",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-14T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 110,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0064",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-14T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 77,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0065",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-14T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 146,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0066",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-14T13:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 501,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0067",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-14T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 119,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0068",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-14T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 153,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0069",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-14T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 150,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0070",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-14T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 86,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0071",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-14T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 113,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0072",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-14T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 64,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0073",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-14T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 130,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0074",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-14T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 48,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0075",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-14T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 45,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0076",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-15T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 124,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0077",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-15T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 69,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0078",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-15T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 138,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0079",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-15T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 77,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0080",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-15T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 50,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0081",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-15T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 149,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0082",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-15T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 69,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0083",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-15T08:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 231,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0084",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-15T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 88,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0085",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-15T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 75,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0086",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-15T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 98,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0087",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-15T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 121,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0088",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-15T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 146,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0089",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-15T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 86,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0090",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-15T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 60,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0091",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-16T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 369,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0092",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-16T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 85,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0093",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-16T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 66,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0094",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-16T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 125,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0095",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-16T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 74,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0096",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-16T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 129,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0097",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-16T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 159,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0098",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-16T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 127,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0099",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-16T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 122,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0100",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-16T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 216,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0101",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-16T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 117,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0102",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-16T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 121,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0103",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-16T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 61,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0104",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-16T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 108,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0105",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-16T16:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 305,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0106",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-17T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 60,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0107",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-17T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 99,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0108",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-17T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 88,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0109",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-17T01:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 318,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0110",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-17T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 158,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0111",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-17T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 121,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0112",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-17T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 128,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0113",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-17T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 111,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0114",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-17T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 68,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0115",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-17T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 127,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0116",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-17T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 81,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0117",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-17T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 147,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0118",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-17T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 138,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0119",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-17T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 139,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0120",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-17T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 47,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0121",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-18T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 297,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0122",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-18T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 145,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0123",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-18T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 44,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0124",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-18T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 143,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0125",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-18T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 80,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0126",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-18T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 91,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0127",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-18T02:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 317,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0128",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-18T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 48,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0129",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-18T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 67,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0130",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-18T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 156,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0131",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-18T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 160,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0132",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-18T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 112,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0133",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-18T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 152,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0134",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-18T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 131,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0135",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-18T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 80,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0136",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-19T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 67,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0137",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-19T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 123,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0138",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-19T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 103,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0139",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-19T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 90,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0140",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-19T07:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 509,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0141",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-19T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 98,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0142",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-19T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 58,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0143",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-19T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 73,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0144",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-19T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 57,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0145",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-19T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 306,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0146",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-19T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 135,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0147",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-19T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 111,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0148",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-19T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 108,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0149",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-19T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 73,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0150",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-19T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 135,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0151",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-20T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 479,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0152",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-20T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 94,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0153",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-20T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 154,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0154",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-20T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 114,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0155",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-20T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 91,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0156",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-20T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 86,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0157",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-20T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 68,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0158",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-20T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 57,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0159",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-20T14:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 440,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0160",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-20T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 103,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0161",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-20T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 51,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0162",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-20T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 136,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0163",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-20T04:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 204,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0164",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-20T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 150,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0165",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-20T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 54,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0166",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-21T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 59,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0167",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-21T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 120,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0168",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-21T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 60,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0169",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-21T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 141,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0170",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-21T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 127,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0171",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-21T13:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 396,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0172",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-21T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 116,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0173",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-21T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 48,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0174",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-21T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 89,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0175",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-21T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 88,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0176",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-21T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 116,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0177",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-21T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 99,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0178",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-21T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 107,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0179",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-21T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 72,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0180",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-21T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 110,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0181",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-22T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 185,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0182",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-22T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 127,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0183",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-22T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 132,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0184",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-22T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 54,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0185",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-22T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 127,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0186",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-22T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 153,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0187",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-22T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 108,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0188",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-22T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 136,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0189",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-22T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 74,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0190",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-22T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 508,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0191",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-22T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 83,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0192",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-22T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 54,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0193",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-22T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 77,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0194",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-22T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 95,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0195",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-22T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 60,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0196",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-23T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 98,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0197",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-23T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 40,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0198",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-23T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 132,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0199",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-23T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 152,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0200",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-23T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 132,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0201",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-23T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 73,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0202",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-23T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 104,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0203",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-23T08:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 271,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0204",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-23T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 104,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0205",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-23T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 156,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0206",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-23T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 53,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0207",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-23T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 151,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0208",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-23T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 120,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0209",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-23T10:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 332,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0210",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-23T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 147,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0211",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-24T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 507,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0212",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-24T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 104,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0213",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-24T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 117,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0214",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-24T01:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 281,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0215",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-24T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 59,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0216",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-24T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 87,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0217",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-24T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 137,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0218",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-24T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 60,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0219",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-24T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 109,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0220",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-24T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 139,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0221",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-24T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 158,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0222",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-24T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 107,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0223",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-24T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 157,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0224",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-24T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 40,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0225",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-24T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 116,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0226",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-25T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 81,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0227",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-25T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 102,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0228",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-25T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 42,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0229",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-25T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 54,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0230",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-25T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 158,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0231",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-25T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 86,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0232",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-25T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 152,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0233",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-25T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 146,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0234",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-25T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 143,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0235",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-25T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 337,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0236",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-25T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 70,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0237",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-25T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 47,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0238",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-25T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 70,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0239",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-25T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 152,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0240",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-25T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 112,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0241",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-26T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 220,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0242",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-26T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 50,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0243",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-26T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 133,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0244",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-26T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 102,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0245",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-26T07:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 215,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0246",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-26T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 137,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0247",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-26T02:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 452,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0248",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-26T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 138,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0249",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-26T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 56,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0250",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-26T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 56,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0251",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-26T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 124,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0252",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-26T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 100,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0253",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-26T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 110,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0254",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-26T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 61,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0255",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-26T16:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 315,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0256",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-27T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 107,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0257",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-27T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 151,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0258",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-27T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 117,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0259",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-27T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 94,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0260",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-27T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 67,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0261",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-27T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 158,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0262",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-27T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 109,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0263",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-27T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 136,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0264",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-27T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 133,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0265",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-27T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 128,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0266",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-27T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 65,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0267",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-27T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 131,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0268",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-27T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 79,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0269",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-27T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 91,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0270",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-27T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 125,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0271",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-28T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 512,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0272",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-28T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 87,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0273",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-28T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 96,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0274",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-28T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 155,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0275",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-28T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 106,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0276",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-28T13:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 411,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0277",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-28T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 55,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0278",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-28T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 71,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0279",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-28T14:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 295,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0280",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-28T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 212,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0281",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-28T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 83,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0282",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-28T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 42,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0283",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-28T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 115,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0284",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-28T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 110,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0285",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-28T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 69,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0286",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-29T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 115,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0287",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-29T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 68,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0288",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-29T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 40,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0289",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-29T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 49,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0290",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-29T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 130,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0291",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-29T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 120,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0292",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-29T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 47,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0293",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-29T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 69,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0294",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-29T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 48,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0295",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-29T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 155,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0296",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-29T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 44,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0297",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-29T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 150,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0298",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-29T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 82,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0299",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-29T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 49,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0300",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-29T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 105,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0301",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-30T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 301,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0302",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-30T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 75,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0303",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-09-30T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 125,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0304",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-30T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 102,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0305",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-30T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 67,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0306",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-09-30T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 109,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0307",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-30T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 56,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0308",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-30T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 132,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0309",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-09-30T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 159,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0310",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-30T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 152,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0311",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-30T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 113,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0312",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-09-30T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 113,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0313",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-30T04:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 422,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0314",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-30T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 71,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0315",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-09-30T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 140,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0316",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-01T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 100,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0317",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-01T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 143,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0318",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-01T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 92,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0319",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-01T01:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 277,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0320",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-01T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 52,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0321",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-01T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 52,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0322",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-01T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 124,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0323",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-01T08:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 400,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0324",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-01T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 85,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0325",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-01T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 396,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0326",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-01T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 92,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0327",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-01T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 99,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0328",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-01T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 150,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0329",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-01T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 133,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0330",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-01T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 46,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0331",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-02T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 514,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0332",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-02T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 122,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0333",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-02T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 52,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0334",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-02T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 47,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0335",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-02T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 91,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0336",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-02T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 133,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0337",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-02T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 83,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0338",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-02T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 142,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0339",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-02T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 150,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0340",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-02T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 53,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0341",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-02T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 71,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0342",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-02T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 64,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0343",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-02T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 64,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0344",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-02T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 108,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0345",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-02T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 97,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0346",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-03T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 57,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0347",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-03T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 94,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0348",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-03T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 63,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0349",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-03T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 75,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0350",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-03T07:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 416,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0351",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-03T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 71,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0352",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-03T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 151,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0353",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-03T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 158,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0354",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-03T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 49,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0355",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-03T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 96,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0356",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-03T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 143,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0357",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-03T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 150,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0358",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-03T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 149,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0359",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-03T10:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 461,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0360",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-03T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 52,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0361",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-04T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 205,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0362",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-04T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 123,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0363",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-04T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 109,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0364",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-04T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 147,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0365",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-04T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 41,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0366",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-04T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 51,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0367",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-04T02:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 301,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0368",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-04T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 61,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0369",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-04T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 92,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0370",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-04T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 428,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0371",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-04T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 101,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0372",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-04T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 67,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0373",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-04T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 150,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0374",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-04T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 91,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0375",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-04T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 155,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0376",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-05T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 47,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0377",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-05T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 61,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0378",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-05T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 88,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0379",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-05T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 40,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0380",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-05T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 89,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0381",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-05T13:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 315,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0382",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-05T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 158,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0383",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-05T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 140,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0384",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-05T14:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 140,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0385",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-05T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 98,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0386",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-05T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 76,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0387",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-05T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 94,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0388",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-05T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 129,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0389",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-05T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 133,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0390",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-05T16:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 140,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0391",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-06T00:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 464,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0392",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-06T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 124,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0393",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-06T12:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 131,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0394",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-06T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 102,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0395",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-06T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 59,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0396",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-06T13:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 64,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0397",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-06T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 77,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0398",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-06T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 67,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0399",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-06T14:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 209,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0400",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-06T03:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 114,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0401",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-06T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 134,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0402",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-06T15:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 109,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0403",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-06T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 47,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0404",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-06T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 135,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0405",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-06T16:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 340,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  },
+  {
+    "id": "run-0406",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-07T00:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 47,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0407",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-07T06:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 46,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0408",
+    "pipeline": "bronze_trips",
+    "activity": "CopyTrips",
+    "started_at": "2026-10-07T12:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 479,
+    "error_code": "AuthorizationPermissionMismatch",
+    "message": "ADLS destination returned HTTP 403 forbidden."
+  },
+  {
+    "id": "run-0409",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-07T01:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 101,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0410",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-07T07:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 104,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0411",
+    "pipeline": "silver_metrics",
+    "activity": "CopyMetrics",
+    "started_at": "2026-10-07T13:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 451,
+    "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+    "message": "CSV field passenger_count is missing from the source header."
+  },
+  {
+    "id": "run-0412",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-07T02:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 60,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0413",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-07T08:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 47,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0414",
+    "pipeline": "warehouse_kpis",
+    "activity": "QueryWarehouse",
+    "started_at": "2026-10-07T14:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 440,
+    "error_code": "SqlTimeout",
+    "message": "SQL source timed out during blocked query execution."
+  },
+  {
+    "id": "run-0415",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-07T03:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 221,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0416",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-07T09:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 148,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0417",
+    "pipeline": "daily_reporting",
+    "activity": "FetchReports",
+    "started_at": "2026-10-07T15:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 275,
+    "error_code": "TooManyRequests",
+    "message": "Source API returned HTTP 429 rate limit exceeded."
+  },
+  {
+    "id": "run-0418",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-07T04:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 48,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0419",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-07T10:00:00Z",
+    "status": "Succeeded",
+    "duration_seconds": 116,
+    "error_code": null,
+    "message": "Activity completed normally."
+  },
+  {
+    "id": "run-0420",
+    "pipeline": "functions_transform",
+    "activity": "InvokeTransform",
+    "started_at": "2026-10-07T16:00:00Z",
+    "status": "Failed",
+    "duration_seconds": 214,
+    "error_code": "FunctionInvocationFailed",
+    "message": "Function invocation returned HTTP 500; inspect traces."
+  }
+]

@@ -1,0 +1,6 @@
+2026-10-01T09:00:00Z ERROR Copy activity failed
+Pipeline: bronze_trips
+Activity: CopyTrips
+ErrorCode: AuthorizationPermissionMismatch
+Message: HTTP 403 forbidden at the storage destination.
+Connection: AccountKey=FAKE_DEMO_VALUE;

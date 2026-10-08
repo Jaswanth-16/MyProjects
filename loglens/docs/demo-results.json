@@ -1,0 +1,96 @@
+[
+  {
+    "sample": "schema.log",
+    "result": {
+      "mode": "offline",
+      "requested_provider": "offline",
+      "warning": null,
+      "summary": {
+        "pipeline": "silver_metrics",
+        "activity": "CopyMetrics",
+        "error_code": "UserErrorInvalidColumnMappingColumnNotFound",
+        "category": "schema",
+        "summary": "The log contains UserErrorInvalidColumnMappingColumnNotFound; investigation is required.",
+        "evidence": [
+          {
+            "line_id": "L3",
+            "quote": "ErrorCode: UserErrorInvalidColumnMappingColumnNotFound"
+          }
+        ]
+      },
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sanitised_lines": {
+        "L1": "Pipeline: silver_metrics",
+        "L2": "Activity: CopyMetrics",
+        "L3": "ErrorCode: UserErrorInvalidColumnMappingColumnNotFound",
+        "L4": "Message: Column passenger_count no longer exists in the CSV header."
+      }
+    }
+  },
+  {
+    "sample": "storage.log",
+    "result": {
+      "mode": "offline",
+      "requested_provider": "offline",
+      "warning": null,
+      "summary": {
+        "pipeline": "bronze_trips",
+        "activity": "CopyTrips",
+        "error_code": "AuthorizationPermissionMismatch",
+        "category": "access",
+        "summary": "The log contains AuthorizationPermissionMismatch; investigation is required.",
+        "evidence": [
+          {
+            "line_id": "L4",
+            "quote": "ErrorCode: AuthorizationPermissionMismatch"
+          }
+        ]
+      },
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sanitised_lines": {
+        "L1": "2026-10-01T09:00:00Z ERROR Copy activity failed",
+        "L2": "Pipeline: bronze_trips",
+        "L3": "Activity: CopyTrips",
+        "L4": "ErrorCode: AuthorizationPermissionMismatch",
+        "L5": "Message: HTTP 403 forbidden at the storage destination.",
+        "L6": "Connection: AccountKey=[REDACTED];"
+      }
+    }
+  },
+  {
+    "sample": "unknown.log",
+    "result": {
+      "mode": "offline",
+      "requested_provider": "offline",
+      "warning": null,
+      "summary": {
+        "pipeline": "sample_pipeline",
+        "activity": "MysteryStep",
+        "error_code": null,
+        "category": "unknown",
+        "summary": "No single recognised error code was found; provide one activity failure.",
+        "evidence": [
+          {
+            "line_id": "L1",
+            "quote": "Pipeline: sample_pipeline"
+          }
+        ]
+      },
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sanitised_lines": {
+        "L1": "Pipeline: sample_pipeline",
+        "L2": "Activity: MysteryStep",
+        "L3": "Message: An unrecognised error needs further investigation."
+      }
+    }
+  }
+]

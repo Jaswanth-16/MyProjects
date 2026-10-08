@@ -1,0 +1,482 @@
+[
+  {
+    "mode": "offline",
+    "requested_provider": "offline",
+    "status": "supported",
+    "answer": {
+      "assessment": "Possible Azure Function invocation failure. Verify before changing resources.",
+      "observations": [
+        {
+          "claim": "functions_transform / InvokeTransform failed with FunctionInvocationFailed.",
+          "citations": [
+            {
+              "source_id": "RUN-run-0420",
+              "quote": "FunctionInvocationFailed"
+            }
+          ]
+        },
+        {
+          "claim": "In the incident's 7-day window, 3 of 21 runs failed (14.29%).",
+          "citations": [
+            {
+              "source_id": "STAT-functions_transform-7",
+              "quote": "{\"avg_duration_seconds\":140.86,\"days\":7,\"failed_runs\":3,\"failure_rate_pct\":14.29,\"pipeline\":\"functions_transform\",\"total_runs\":21,\"window_end\":\"2026-10-07T16:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}"
+            }
+          ]
+        }
+      ],
+      "next_checks": [
+        {
+          "claim": "Check Function execution traces for the same run and correlation identifiers.",
+          "citations": [
+            {
+              "source_id": "DOC-function-failure",
+              "quote": "Check Function execution traces for the same run and correlation identifiers."
+            }
+          ]
+        }
+      ],
+      "uncertainty": "This is a deterministic tool replay over synthetic data, not an AI-generated diagnosis. Error codes and aggregate counts do not prove a root cause."
+    },
+    "evidence": [
+      {
+        "id": "RUN-run-0420",
+        "kind": "run",
+        "content": "{\"activity\":\"InvokeTransform\",\"duration_seconds\":214,\"error_code\":\"FunctionInvocationFailed\",\"id\":\"run-0420\",\"message\":\"Function invocation returned HTTP 500; inspect traces.\",\"pipeline\":\"functions_transform\",\"started_at\":\"2026-10-07T16:00:00Z\",\"status\":\"Failed\"}",
+        "source_url": null
+      },
+      {
+        "id": "STAT-functions_transform-7",
+        "kind": "statistics",
+        "content": "{\"avg_duration_seconds\":140.86,\"days\":7,\"failed_runs\":3,\"failure_rate_pct\":14.29,\"pipeline\":\"functions_transform\",\"total_runs\":21,\"window_end\":\"2026-10-07T16:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}",
+        "source_url": null
+      },
+      {
+        "id": "DOC-function-failure",
+        "kind": "runbook",
+        "content": "Azure Function invocation failure\nfunction activity http 500 invocation exception crash response json execution\nCheck Function execution traces for the same run and correlation identifiers.\nValidate request and response contracts, including the response expected by the ADF Azure Function activity.\nCheck function authentication, app configuration and dependencies; do not paste keys into troubleshooting logs.",
+        "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/control-flow-azure-function-activity"
+      }
+    ],
+    "trace": [
+      {
+        "tool": "get_run",
+        "arguments": {
+          "run_id": "run-0420"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.43
+      },
+      {
+        "tool": "pipeline_stats",
+        "arguments": {
+          "days": 7
+        },
+        "status": "ok",
+        "elapsed_ms": 0.38
+      },
+      {
+        "tool": "search_runbooks",
+        "arguments": {
+          "query": "FunctionInvocationFailed"
+        },
+        "status": "ok",
+        "elapsed_ms": 1.33
+      }
+    ],
+    "warning": null,
+    "metrics": {
+      "model_turns": 0,
+      "live_data_tool_calls": 0,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 6.65
+    }
+  },
+  {
+    "mode": "offline",
+    "requested_provider": "offline",
+    "status": "supported",
+    "answer": {
+      "assessment": "Possible Transient service throttling. Verify before changing resources.",
+      "observations": [
+        {
+          "claim": "daily_reporting / FetchReports failed with TooManyRequests.",
+          "citations": [
+            {
+              "source_id": "RUN-run-0417",
+              "quote": "TooManyRequests"
+            }
+          ]
+        },
+        {
+          "claim": "In the incident's 7-day window, 4 of 21 runs failed (19.05%).",
+          "citations": [
+            {
+              "source_id": "STAT-daily_reporting-7",
+              "quote": "{\"avg_duration_seconds\":144.24,\"days\":7,\"failed_runs\":4,\"failure_rate_pct\":19.05,\"pipeline\":\"daily_reporting\",\"total_runs\":21,\"window_end\":\"2026-10-07T15:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}"
+            }
+          ]
+        }
+      ],
+      "next_checks": [
+        {
+          "claim": "Confirm that the error is transient throttling and inspect any Retry-After indication.",
+          "citations": [
+            {
+              "source_id": "DOC-throttling",
+              "quote": "Confirm that the error is transient throttling and inspect any Retry-After indication."
+            }
+          ]
+        }
+      ],
+      "uncertainty": "This is a deterministic tool replay over synthetic data, not an AI-generated diagnosis. Error codes and aggregate counts do not prove a root cause."
+    },
+    "evidence": [
+      {
+        "id": "RUN-run-0417",
+        "kind": "run",
+        "content": "{\"activity\":\"FetchReports\",\"duration_seconds\":275,\"error_code\":\"TooManyRequests\",\"id\":\"run-0417\",\"message\":\"Source API returned HTTP 429 rate limit exceeded.\",\"pipeline\":\"daily_reporting\",\"started_at\":\"2026-10-07T15:00:00Z\",\"status\":\"Failed\"}",
+        "source_url": null
+      },
+      {
+        "id": "STAT-daily_reporting-7",
+        "kind": "statistics",
+        "content": "{\"avg_duration_seconds\":144.24,\"days\":7,\"failed_runs\":4,\"failure_rate_pct\":19.05,\"pipeline\":\"daily_reporting\",\"total_runs\":21,\"window_end\":\"2026-10-07T15:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}",
+        "source_url": null
+      },
+      {
+        "id": "DOC-throttling",
+        "kind": "runbook",
+        "content": "Transient service throttling\n429 throttling too many requests rate limit retry backoff concurrency\nConfirm that the error is transient throttling and inspect any Retry-After indication.\nReduce concurrency and use bounded retries with increasing delay; do not retry indefinitely.\nVerify idempotency before retrying writes and escalate sustained quota or capacity constraints.",
+        "source_url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry"
+      }
+    ],
+    "trace": [
+      {
+        "tool": "get_run",
+        "arguments": {
+          "run_id": "run-0417"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.14
+      },
+      {
+        "tool": "pipeline_stats",
+        "arguments": {
+          "days": 7
+        },
+        "status": "ok",
+        "elapsed_ms": 0.14
+      },
+      {
+        "tool": "search_runbooks",
+        "arguments": {
+          "query": "TooManyRequests"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.21
+      }
+    ],
+    "warning": null,
+    "metrics": {
+      "model_turns": 0,
+      "live_data_tool_calls": 0,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 5.19
+    }
+  },
+  {
+    "mode": "offline",
+    "requested_provider": "offline",
+    "status": "supported",
+    "answer": {
+      "assessment": "Possible SQL query timeout. Verify before changing resources.",
+      "observations": [
+        {
+          "claim": "warehouse_kpis / QueryWarehouse failed with SqlTimeout.",
+          "citations": [
+            {
+              "source_id": "RUN-run-0414",
+              "quote": "SqlTimeout"
+            }
+          ]
+        },
+        {
+          "claim": "In the incident's 7-day window, 4 of 21 runs failed (19.05%).",
+          "citations": [
+            {
+              "source_id": "STAT-warehouse_kpis-7",
+              "quote": "{\"avg_duration_seconds\":149.24,\"days\":7,\"failed_runs\":4,\"failure_rate_pct\":19.05,\"pipeline\":\"warehouse_kpis\",\"total_runs\":21,\"window_end\":\"2026-10-07T14:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}"
+            }
+          ]
+        }
+      ],
+      "next_checks": [
+        {
+          "claim": "Inspect the full inner SQL error to distinguish authentication, syntax and timeout failures.",
+          "citations": [
+            {
+              "source_id": "DOC-sql-timeout",
+              "quote": "Inspect the full inner SQL error to distinguish authentication, syntax and timeout failures."
+            }
+          ]
+        }
+      ],
+      "uncertainty": "This is a deterministic tool replay over synthetic data, not an AI-generated diagnosis. Error codes and aggregate counts do not prove a root cause."
+    },
+    "evidence": [
+      {
+        "id": "RUN-run-0414",
+        "kind": "run",
+        "content": "{\"activity\":\"QueryWarehouse\",\"duration_seconds\":440,\"error_code\":\"SqlTimeout\",\"id\":\"run-0414\",\"message\":\"SQL source timed out during blocked query execution.\",\"pipeline\":\"warehouse_kpis\",\"started_at\":\"2026-10-07T14:00:00Z\",\"status\":\"Failed\"}",
+        "source_url": null
+      },
+      {
+        "id": "STAT-warehouse_kpis-7",
+        "kind": "statistics",
+        "content": "{\"avg_duration_seconds\":149.24,\"days\":7,\"failed_runs\":4,\"failure_rate_pct\":19.05,\"pipeline\":\"warehouse_kpis\",\"total_runs\":21,\"window_end\":\"2026-10-07T14:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}",
+        "source_url": null
+      },
+      {
+        "id": "DOC-sql-timeout",
+        "kind": "runbook",
+        "content": "SQL query timeout\nsql database query timeout timed slow blocking execution connection\nInspect the full inner SQL error to distinguish authentication, syntax and timeout failures.\nFor timeout symptoms, inspect query plans, blocking and source workload before increasing activity timeouts.\nTest a bounded query and compare throughput; use suitable indexes and partitioning when supported.",
+        "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/copy-activity-performance-troubleshooting"
+      }
+    ],
+    "trace": [
+      {
+        "tool": "get_run",
+        "arguments": {
+          "run_id": "run-0414"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.08
+      },
+      {
+        "tool": "pipeline_stats",
+        "arguments": {
+          "days": 7
+        },
+        "status": "ok",
+        "elapsed_ms": 0.26
+      },
+      {
+        "tool": "search_runbooks",
+        "arguments": {
+          "query": "SqlTimeout"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.11
+      }
+    ],
+    "warning": null,
+    "metrics": {
+      "model_turns": 0,
+      "live_data_tool_calls": 0,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 11.49
+    }
+  },
+  {
+    "mode": "offline",
+    "requested_provider": "offline",
+    "status": "supported",
+    "answer": {
+      "assessment": "Possible Copy activity schema or column mismatch. Verify before changing resources.",
+      "observations": [
+        {
+          "claim": "silver_metrics / CopyMetrics failed with UserErrorInvalidColumnMappingColumnNotFound.",
+          "citations": [
+            {
+              "source_id": "RUN-run-0411",
+              "quote": "UserErrorInvalidColumnMappingColumnNotFound"
+            }
+          ]
+        },
+        {
+          "claim": "In the incident's 7-day window, 4 of 21 runs failed (19.05%).",
+          "citations": [
+            {
+              "source_id": "STAT-silver_metrics-7",
+              "quote": "{\"avg_duration_seconds\":132.29,\"days\":7,\"failed_runs\":4,\"failure_rate_pct\":19.05,\"pipeline\":\"silver_metrics\",\"total_runs\":21,\"window_end\":\"2026-10-07T13:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}"
+            }
+          ]
+        }
+      ],
+      "next_checks": [
+        {
+          "claim": "Compare the current source schema with explicit Copy activity mappings and the sink schema.",
+          "citations": [
+            {
+              "source_id": "DOC-schema-mismatch",
+              "quote": "Compare the current source schema with explicit Copy activity mappings and the sink schema."
+            }
+          ]
+        }
+      ],
+      "uncertainty": "This is a deterministic tool replay over synthetic data, not an AI-generated diagnosis. Error codes and aggregate counts do not prove a root cause."
+    },
+    "evidence": [
+      {
+        "id": "RUN-run-0411",
+        "kind": "run",
+        "content": "{\"activity\":\"CopyMetrics\",\"duration_seconds\":451,\"error_code\":\"UserErrorInvalidColumnMappingColumnNotFound\",\"id\":\"run-0411\",\"message\":\"CSV field passenger_count is missing from the source header.\",\"pipeline\":\"silver_metrics\",\"started_at\":\"2026-10-07T13:00:00Z\",\"status\":\"Failed\"}",
+        "source_url": null
+      },
+      {
+        "id": "STAT-silver_metrics-7",
+        "kind": "statistics",
+        "content": "{\"avg_duration_seconds\":132.29,\"days\":7,\"failed_runs\":4,\"failure_rate_pct\":19.05,\"pipeline\":\"silver_metrics\",\"total_runs\":21,\"window_end\":\"2026-10-07T13:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}",
+        "source_url": null
+      },
+      {
+        "id": "DOC-schema-mismatch",
+        "kind": "runbook",
+        "content": "Copy activity schema or column mismatch\nschema column mapping missing changed csv data type conversion incompatible\nCompare the current source schema with explicit Copy activity mappings and the sink schema.\nCheck delimiter, headers and sampled data types before regenerating mappings.\nTest representative rows in a separate destination before applying schema changes to production.",
+        "source_url": "https://learn.microsoft.com/en-us/azure/data-factory/copy-activity-schema-and-type-mapping"
+      }
+    ],
+    "trace": [
+      {
+        "tool": "get_run",
+        "arguments": {
+          "run_id": "run-0411"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.21
+      },
+      {
+        "tool": "pipeline_stats",
+        "arguments": {
+          "days": 7
+        },
+        "status": "ok",
+        "elapsed_ms": 0.29
+      },
+      {
+        "tool": "search_runbooks",
+        "arguments": {
+          "query": "UserErrorInvalidColumnMappingColumnNotFound"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.18
+      }
+    ],
+    "warning": null,
+    "metrics": {
+      "model_turns": 0,
+      "live_data_tool_calls": 0,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 5.53
+    }
+  },
+  {
+    "mode": "offline",
+    "requested_provider": "offline",
+    "status": "supported",
+    "answer": {
+      "assessment": "Possible ADLS storage authorization failure. Verify before changing resources.",
+      "observations": [
+        {
+          "claim": "bronze_trips / CopyTrips failed with AuthorizationPermissionMismatch.",
+          "citations": [
+            {
+              "source_id": "RUN-run-0408",
+              "quote": "AuthorizationPermissionMismatch"
+            }
+          ]
+        },
+        {
+          "claim": "In the incident's 7-day window, 4 of 21 runs failed (19.05%).",
+          "citations": [
+            {
+              "source_id": "STAT-bronze_trips-7",
+              "quote": "{\"avg_duration_seconds\":150.52,\"days\":7,\"failed_runs\":4,\"failure_rate_pct\":19.05,\"pipeline\":\"bronze_trips\",\"total_runs\":21,\"window_end\":\"2026-10-07T12:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}"
+            }
+          ]
+        }
+      ],
+      "next_checks": [
+        {
+          "claim": "Identify the managed identity used by the linked service, then check its scoped storage data permissions.",
+          "citations": [
+            {
+              "source_id": "DOC-storage-access",
+              "quote": "Identify the managed identity used by the linked service, then check its scoped storage data permissions."
+            }
+          ]
+        }
+      ],
+      "uncertainty": "This is a deterministic tool replay over synthetic data, not an AI-generated diagnosis. Error codes and aggregate counts do not prove a root cause."
+    },
+    "evidence": [
+      {
+        "id": "RUN-run-0408",
+        "kind": "run",
+        "content": "{\"activity\":\"CopyTrips\",\"duration_seconds\":479,\"error_code\":\"AuthorizationPermissionMismatch\",\"id\":\"run-0408\",\"message\":\"ADLS destination returned HTTP 403 forbidden.\",\"pipeline\":\"bronze_trips\",\"started_at\":\"2026-10-07T12:00:00Z\",\"status\":\"Failed\"}",
+        "source_url": null
+      },
+      {
+        "id": "STAT-bronze_trips-7",
+        "kind": "statistics",
+        "content": "{\"avg_duration_seconds\":150.52,\"days\":7,\"failed_runs\":4,\"failure_rate_pct\":19.05,\"pipeline\":\"bronze_trips\",\"total_runs\":21,\"window_end\":\"2026-10-07T12:00:00Z\",\"window_start\":\"2026-10-01T00:00:00Z\"}",
+        "source_url": null
+      },
+      {
+        "id": "DOC-storage-access",
+        "kind": "runbook",
+        "content": "ADLS storage authorization failure\n403 forbidden authorization denied permission ACL managed identity storage access\nIdentify the managed identity used by the linked service, then check its scoped storage data permissions.\nFor hierarchical namespace paths, inspect directory traversal and file access ACLs as well as RBAC.\nCheck storage firewall and private endpoint routing before changing permissions; do not grant broad Owner access.",
+        "source_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control-model"
+      }
+    ],
+    "trace": [
+      {
+        "tool": "get_run",
+        "arguments": {
+          "run_id": "run-0408"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.15
+      },
+      {
+        "tool": "pipeline_stats",
+        "arguments": {
+          "days": 7
+        },
+        "status": "ok",
+        "elapsed_ms": 0.26
+      },
+      {
+        "tool": "search_runbooks",
+        "arguments": {
+          "query": "AuthorizationPermissionMismatch"
+        },
+        "status": "ok",
+        "elapsed_ms": 0.13
+      }
+    ],
+    "warning": null,
+    "metrics": {
+      "model_turns": 0,
+      "live_data_tool_calls": 0,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 5.25
+    }
+  }
+]

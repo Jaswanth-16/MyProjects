@@ -1,0 +1,28 @@
+name: AI study projects
+on:
+  push:
+    paths: ['loglens/**', 'opsevidence/**', '.github/workflows/ai-study-projects-ci.yml']
+  pull_request:
+    paths: ['loglens/**', 'opsevidence/**', '.github/workflows/ai-study-projects-ci.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [loglens, opsevidence]
+        python: ['3.11', '3.12']
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s tests -v
+      - run: python -m compileall -q ${{ matrix.project }}
+      - run: node --check ${{ matrix.project }}/app.js
+      - run: python -m ${{ matrix.project }} demo > /tmp/demo-results.json
+      - run: python -c "import json; assert len(json.load(open('/tmp/demo-results.json'))) > 0"

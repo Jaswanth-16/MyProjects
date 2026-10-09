@@ -74,7 +74,13 @@ class AgentTests(unittest.TestCase):
                 messages=payloads[1]['messages']
                 self.assertEqual(sum(m['role']=='tool'for m in messages),0 if provider in {'claude','groq'} else 3)
                 if provider=='claude':self.assertEqual(len(messages[-1]['content']),3)
-                if provider=='groq':self.assertEqual(len(json.loads(messages[-1]['content'])['tool_evidence']),3)
+                if provider=='groq':
+                    context=json.loads(messages[-1]['content']);self.assertEqual(len(context['tool_evidence']),3)
+                    evidence={e['id']:e for result in context['tool_evidence'] for e in result['evidence']}
+                    self.assertTrue(context['citation_catalog'])
+                    for source in context['citation_catalog']:
+                        self.assertTrue(source['quote_options'])
+                        for quote in source['quote_options']:self.assertIn(quote,evidence[source['source_id']]['content'])
     def test_premature_final_falls_back(self):
         helper=test_providers.ProviderTests()
         client=helper.client('claude',lambda *a:helper.response('claude',[{'id':'f','name':'submit_assessment','arguments':{}}]))

@@ -71,6 +71,18 @@ class Client:
             payload['response_format']={'type':'json_object'}
             final_system=system+' Evidence collection is complete. Do not call tools. Return only a JSON object matching this schema: '+json.dumps(tools[0]['schema'])
             collected={'request':messages[0]['content'],'tool_evidence':[json.loads(m['content']) for m in messages if m['role']=='tool']}
+            catalog=[]
+            for result in collected['tool_evidence']:
+                for evidence in result.get('evidence',[]):
+                    content=evidence['content']
+                    if evidence['kind'] in {'run','statistics'}:
+                        values=json.loads(content)
+                        options=[json.dumps(k)+':'+json.dumps(v,separators=(',',':')) for k,v in values.items()]
+                    else:options=content.splitlines()
+                    options=[q for q in options if q and len(q)<=300 and q in content]
+                    catalog.append({'source_id':evidence['id'],'quote_options':options})
+            collected['citation_catalog']=catalog
+            final_system+=' Copy each citation quote exactly from the quote_options for that source_id in citation_catalog. Do not reformat JSON, add spaces, paraphrase or combine quote options.'
             payload['messages']=[{'role':'system','content':final_system},{'role':'user','content':json.dumps(collected)}]
         self.requests+=1
         try:

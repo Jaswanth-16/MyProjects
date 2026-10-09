@@ -28,6 +28,10 @@ class ProviderTests(unittest.TestCase):
                 if provider=='groq':
                     self.assertEqual(client.url,'https://api.groq.com/openai/v1/chat/completions')
                     self.assertEqual(client.headers['Authorization'],'Bearer test-only')
+    def test_groq_final_json_truncation_and_malformed_rejected(self):
+        for finish,text in [('length','{}'),('stop','NOT JSON')]:
+            client=self.client('groq',lambda *a:{'choices':[{'finish_reason':finish,'message':{'content':text}}]})
+            with self.assertRaises(ProviderError):client.step('s',[{'role':'user','content':'case'}],[{'name':'submit_assessment','description':'final','schema':{'type':'object'}}],force='submit_assessment')
     def test_truncation_rejected(self):
         for provider in ['azure','claude','groq']:
             client=self.client(provider,lambda *a:self.response(provider,[{'id':'c','name':'read','arguments':{}}],False))

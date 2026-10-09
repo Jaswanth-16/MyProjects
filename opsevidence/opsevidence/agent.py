@@ -61,7 +61,11 @@ def investigate(incident_id,question,provider='offline',client=None):
                 messages=[{'role':'user','content':canonical({'selected_incident':incident_id,'question':question})}]
                 answer=None;seen=set()
                 for turns in range(1,5):
-                    wire,requests=client.step(SYSTEM,messages,tools.specs()+[FINAL])
+                    # Withhold the final tool until all three evidence kinds exist.
+                    complete=all(any(e['kind']==kind for e in tools.evidence.values()) for kind in ['run','statistics','runbook'])
+                    missing=next((name for kind,name in [('run','get_run'),('statistics','pipeline_stats'),('runbook','search_runbooks')] if not any(e['kind']==kind for e in tools.evidence.values())),None)
+                    specs=[FINAL] if complete else [spec for spec in tools.specs() if spec['name']==missing]
+                    wire,requests=client.step(SYSTEM,messages,specs,force='submit_assessment' if complete else missing)
                     results=[]
                     for request in requests:
                         if request['id'] in seen:raise ContractError('Repeated tool-call ID')

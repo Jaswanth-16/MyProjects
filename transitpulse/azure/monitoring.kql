@@ -1,0 +1,16 @@
+// Optional enableMonitoring=true; diagnostics must first produce data.
+// Review table schema in your workspace before using these investigation queries.
+ADFPipelineRun
+| where TimeGenerated > ago(24h)
+| summarize Runs=count(), Failed=countif(Status == 'Failed') by PipelineName
+| extend FailureRatePct=round(100.0 * Failed / Runs, 2)
+| order by Failed desc
+
+ADFActivityRun
+| where TimeGenerated > ago(24h) and Status == 'Failed'
+| project TimeGenerated, PipelineName, ActivityName, ActivityType, Status
+| order by TimeGenerated desc
+
+AppRequests
+| where TimeGenerated > ago(24h)
+| summarize Requests=count(), Failures=countif(Success == false), P95=percentile(DurationMs,95) by bin(TimeGenerated,1h)

@@ -60,9 +60,18 @@ class Client:
                      'tools':[{'name':t['name'],'description':t['description'],'input_schema':t['schema']}for t in tools],
                      'tool_choice':{'type':'tool','name':force} if force else {'type':'any'}}
         else:
-            payload={'model':self.model,'max_completion_tokens':1200,'messages':[{'role':'system','content':system}]+messages,
+            payload={'model':self.model,'max_completion_tokens':1600,'messages':[{'role':'system','content':system}]+messages,
                      'tools':[{'type':'function','function':{'name':t['name'],'description':t['description'],'parameters':t['schema']}}for t in tools],
                      'tool_choice':{'type':'function','function':{'name':force}} if force else 'required'}
+        if self.provider=='groq' and self.model in {'openai/gpt-oss-20b','openai/gpt-oss-120b'}:
+            payload['reasoning_effort']='low'
+        json_final=self.provider=='groq' and force=='submit_assessment'
+        if json_final:
+            payload.pop('tools');payload.pop('tool_choice')
+            payload['response_format']={'type':'json_object'}
+            final_system=system+' Evidence collection is complete. Do not call tools. Return only a JSON object matching this schema: '+json.dumps(tools[0]['schema'])
+            collected={'request':messages[0]['content'],'tool_evidence':[json.loads(m['content']) for m in messages if m['role']=='tool']}
+            payload['messages']=[{'role':'system','content':final_system},{'role':'user','content':json.dumps(collected)}]
         self.requests+=1
         try:
             response=self.transport(self.url,self.headers,payload)
@@ -75,6 +84,10 @@ class Client:
                 calls=[{'id':b['id'],'name':b['name'],'arguments':b['input']}for b in blocks if b['type']=='tool_use']
                 wire={'role':'assistant','content':blocks}
             else:
+                if json_final:
+                    if response['choices'][0].get('finish_reason')!='stop':raise ProviderError('Incomplete final JSON assessment')
+                    text=response['choices'][0]['message']['content']
+                    return {'role':'assistant','content':text},[{'id':'final-json-'+str(self.requests),'name':force,'arguments':json.loads(text)}]
                 if response['choices'][0].get('finish_reason')!='tool_calls':raise ProviderError('Model did not finish with tool calls')
                 wire=response['choices'][0]['message']
                 calls=[{'id':b['id'],'name':b['function']['name'],'arguments':json.loads(b['function']['arguments'])}for b in wire.get('tool_calls',[])]

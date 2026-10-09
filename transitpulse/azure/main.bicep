@@ -6,6 +6,9 @@ param location string = resourceGroup().location
 @description('Object ID of the operator who will set the Function key in Key Vault. Obtain with az ad signed-in-user show.')
 param operatorObjectId string
 
+@description('Optional monitoring incurs Azure ingestion/retention charges. Review costs before enabling.')
+param enableMonitoring bool = false
+
 var suffix = uniqueString(resourceGroup().id)
 var blobContributor = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')
 var secretReader = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6')
@@ -44,6 +47,39 @@ resource hostStorage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
     supportsHttpsTrafficOnly: true
   }
 }
+
+resource logs 'Microsoft.OperationalInsights/workspaces@2023-09-01' = if (enableMonitoring) {
+  name: 'tp-logs-${suffix}'
+  location: location
+  properties: {
+    sku: { name: 'PerGB2018' }
+    retentionInDays: 30
+    workspaceCapping: { dailyQuotaGb: 0.1 }
+  }
+}
+resource insights 'Microsoft.Insights/components@2020-02-02' = if (enableMonitoring) {
+  name: 'tp-insights-${suffix}'
+  location: location
+  kind: 'web'
+  properties: {
+    Application_Type: 'web'
+    WorkspaceResourceId: logs!.id
+  }
+}
+resource factoryDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = if (enableMonitoring) {
+  name: 'tp-adf-diagnostics'
+  scope: factory
+  properties: {
+    workspaceId: logs!.id
+    logAnalyticsDestinationType: 'Dedicated'
+    logs: [
+      { category: 'PipelineRuns', enabled: true }
+      { category: 'ActivityRuns', enabled: true }
+      { category: 'TriggerRuns', enabled: true }
+    ]
+  }
+}
+
 resource plan 'Microsoft.Web/serverfarms@2023-12-01' = {
   name: 'tp-plan-${suffix}'
   location: location
@@ -63,7 +99,7 @@ resource functionApp 'Microsoft.Web/sites@2023-12-01' = {
       linuxFxVersion: 'Python|3.11'
       minTlsVersion: '1.2'
       ftpsState: 'Disabled'
-      appSettings: [
+      appSettings: concat([
         { name: 'AzureWebJobsStorage', value: 'DefaultEndpointsProtocol=https;AccountName=${hostStorage.name};AccountKey=${hostStorage.listKeys().keys[0].value};EndpointSuffix=${environment().suffixes.storage}' }
         { name: 'FUNCTIONS_EXTENSION_VERSION', value: '~4' }
         { name: 'FUNCTIONS_WORKER_RUNTIME', value: 'python' }
@@ -71,7 +107,9 @@ resource functionApp 'Microsoft.Web/sites@2023-12-01' = {
         { name: 'ENABLE_ORYX_BUILD', value: 'true' }
         { name: 'TRANSITPULSE_STORAGE_URL', value: lake.properties.primaryEndpoints.blob }
         { name: 'TRANSITPULSE_CONTAINER', value: container.name }
-      ]
+      ], enableMonitoring ? [
+        { name: 'APPLICATIONINSIGHTS_CONNECTION_STRING', value: insights!.properties.ConnectionString }
+      ] : [])
     }
   }
 }

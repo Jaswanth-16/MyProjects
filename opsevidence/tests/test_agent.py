@@ -57,13 +57,24 @@ class AgentTests(unittest.TestCase):
                 def transport(url,headers,payload):
                     payloads.append(payload)
                     calls=[{'id':'a','name':'get_run','arguments':{'run_id':'run-0420'}},{'id':'b','name':'pipeline_stats','arguments':{'days':7}},{'id':'c','name':'search_runbooks','arguments':{'query':'FunctionInvocationFailed'}}] if len(payloads)==1 else [{'id':'final','name':'submit_assessment','arguments':final}]
+                    if provider=='groq' and len(payloads)>1:
+                        return {'choices':[{'finish_reason':'stop','message':{'content':json.dumps(final)}}],'usage':{'prompt_tokens':10,'completion_tokens':5}}
                     return helper.response(provider,calls)
                 client=helper.client(provider,transport);result=investigate('run-0420','Investigate',provider,client)
                 self.assertEqual(result['mode'],provider);self.assertEqual(result['metrics']['model_turns'],2)
                 self.assertEqual(result['metrics']['live_data_tool_calls'],3)
+                if provider=='claude':
+                    self.assertNotIn('submit_assessment',[t['name'] for t in payloads[0]['tools']])
+                    self.assertEqual(payloads[1]['tool_choice'],{'type':'tool','name':'submit_assessment'})
+                else:
+                    self.assertNotIn('submit_assessment',[t['function']['name'] for t in payloads[0]['tools']])
+                    if provider=='groq':
+                        self.assertNotIn('tools',payloads[1]);self.assertEqual(payloads[1]['response_format'],{'type':'json_object'})
+                    else:self.assertEqual(payloads[1]['tool_choice']['function']['name'],'submit_assessment')
                 messages=payloads[1]['messages']
-                self.assertEqual(sum(m['role']=='tool'for m in messages),0 if provider=='claude'else 3)
+                self.assertEqual(sum(m['role']=='tool'for m in messages),0 if provider in {'claude','groq'} else 3)
                 if provider=='claude':self.assertEqual(len(messages[-1]['content']),3)
+                if provider=='groq':self.assertEqual(len(json.loads(messages[-1]['content'])['tool_evidence']),3)
     def test_premature_final_falls_back(self):
         helper=test_providers.ProviderTests()
         client=helper.client('claude',lambda *a:helper.response('claude',[{'id':'f','name':'submit_assessment','arguments':{}}]))

@@ -111,6 +111,16 @@ class ModelTests(unittest.TestCase):
         self.assertEqual(result['mode'],'llm');req=opener.open.call_args.args[0]
         self.assertEqual(req.full_url,'https://api.groq.com/openai/v1/chat/completions')
         self.assertEqual(req.get_header('Authorization'),'Bearer fake-key')
+    def test_groq_reasoning_budget_is_model_specific(self):
+        answer={'summary':'Possible timeout','checks':['Inspect blocking'],'citation_ids':['sql-timeout']}
+        envelope={'choices':[{'finish_reason':'stop','message':{'content':json.dumps(answer)}}]}
+        for model in ['openai/gpt-oss-20b','test-model']:
+            opener=MagicMock();opener.open.return_value.__enter__.return_value.read.return_value=json.dumps(envelope).encode()
+            with patch.dict(os.environ,{'GROQ_API_KEY':'fake','GROQ_MODEL':model},clear=True),patch('pipelinecopilot.llm.build_opener',return_value=opener):
+                generate('SqlTimeout','',Assistant().index.search('SqlTimeout'),provider='groq')
+            body=json.loads(opener.open.call_args.args[0].data)
+            self.assertEqual(body['max_completion_tokens'],1600)
+            self.assertEqual(body.get('reasoning_effort'),'low' if model.startswith('openai/') else None)
     def test_truncated_response_is_rejected(self):
         opener=MagicMock();opener.open.return_value.__enter__.return_value.read.return_value=json.dumps({'choices':[{'finish_reason':'length','message':{'content':'{}'}}]}).encode()
         with patch.dict(os.environ,ENV,clear=True),patch('pipelinecopilot.llm.build_opener',return_value=opener),self.assertRaises(ModelError):generate('SqlTimeout','',Assistant().index.search('SqlTimeout'))

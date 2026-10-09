@@ -1,0 +1,254 @@
+{
+  "scope": "49 developer-authored synthetic regression checks. No held-out semantic or live model accuracy claim. Includes the existing 30-case retrieval set.",
+  "live_calls": 0,
+  "passed": 49,
+  "total": 49,
+  "status": "pass",
+  "cases": [
+    {
+      "project": "LogLens",
+      "case": "AuthorizationPermissionMismatch",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "SqlTimeout",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "UserErrorInvalidColumnMappingColumnNotFound",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "TooManyRequests",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "IntegrationRuntimeUnavailable",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "LoginFailed",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "FunctionInvocationFailed",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "DuplicateKey",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "missing",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "ambiguous",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "instruction",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "credential_redaction",
+      "pass": true
+    },
+    {
+      "project": "LogLens",
+      "case": "fabricated_evidence_rejected",
+      "pass": true
+    },
+    {
+      "project": "OpsEvidence",
+      "case": "run-0408",
+      "pass": true
+    },
+    {
+      "project": "OpsEvidence",
+      "case": "run-0411",
+      "pass": true
+    },
+    {
+      "project": "OpsEvidence",
+      "case": "run-0414",
+      "pass": true
+    },
+    {
+      "project": "OpsEvidence",
+      "case": "run-0417",
+      "pass": true
+    },
+    {
+      "project": "OpsEvidence",
+      "case": "run-0420",
+      "pass": true
+    },
+    {
+      "project": "OpsEvidence",
+      "case": "invented_source_rejected",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-01",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-02",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-03",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-04",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-05",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-06",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-07",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-08",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-09",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-10",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-11",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-12",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-13",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-14",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-15",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-16",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-17",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-18",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-19",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-20",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-21",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-22",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-23",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-24",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-25",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-26",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-27",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-28",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-29",
+      "pass": true
+    },
+    {
+      "project": "PipelineCopilot",
+      "case": "case-30",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+name: Portfolio evaluation
+on:
+  push:
+    paths: ['scripts/evaluate_portfolio.py', 'loglens/**', 'pipelinecopilot/**', 'opsevidence/**', '.github/workflows/portfolio-evaluation.yml']
+  pull_request:
+    paths: ['scripts/evaluate_portfolio.py', 'loglens/**', 'pipelinecopilot/**', 'opsevidence/**', '.github/workflows/portfolio-evaluation.yml']
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/evaluate_portfolio.py > portfolio-evaluation.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-portfolio-evaluation
+          path: portfolio-evaluation.json

@@ -15,6 +15,8 @@ I am Jaswanth, an Azure Data and BI Engineer at Accenture. This portfolio connec
 
 [Verification](TESTING.md) distinguishes unit/HTTP, Blob SDK/Azurite, browser and live checks. [49 regression cases](docs/portfolio-evaluation.json) include the existing 30 retrieval examples; this developer-authored synthetic set is not a held-out accuracy benchmark.
 
+Current verification: 119 unit/HTTP checks, four real SDK/Azurite checks and twelve browser checks passed. The latest six-case Groq smoke suite passed with `openai/gpt-oss-120b`; earlier failures are retained in the report. These small synthetic checks do not establish general answer accuracy.
+
 Live Azure deployment, Azure OpenAI and Claude execution remain unverified. [Groq results](docs/groq-live-smoke-results.json) retain accepted outputs and failures; fallback is never a live pass.
 
 ## Run the evidence

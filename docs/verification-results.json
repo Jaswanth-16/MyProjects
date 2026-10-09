@@ -1,11 +1,11 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "scope": "Synthetic portfolio tests; no claim of production readiness or general model accuracy",
   "unit_and_http_suites": {
-    "transitpulse": 31,
-    "pipelinecopilot": 41,
+    "transitpulse": 33,
+    "pipelinecopilot": 42,
     "loglens": 19,
-    "opsevidence": 24
+    "opsevidence": 25
   },
   "azurite_integration_tests": {
     "passed": 4,
@@ -18,7 +18,7 @@
     "chromium": "153",
     "web_security": "enabled"
   },
-  "total_passing_checks": 131,
+  "total_passing_checks": 135,
   "pipelinecopilot_curated_retrieval_cases": {
     "passed": 30,
     "total": 30
@@ -29,15 +29,31 @@
     "replay": "skipped"
   },
   "live_ai": {
-    "status": "partial_pass",
+    "status": "pass",
     "provider": "groq",
-    "model": "openai/gpt-oss-20b",
+    "model": "openai/gpt-oss-120b",
     "cases_attempted": 6,
-    "successful_live_cases": 4,
-    "reason": "Application User-Agent resolved HTTP 403. OpsEvidence run-0408 and PipelineCopilot SqlTimeout rejected live output and fell back.",
-    "details": "groq-live-smoke-results.json"
+    "successful_live_cases": 6,
+    "reason": "Latest full synthetic suite after exact-quote catalog. Prior unsuccessful experiments retained; no production accuracy claim.",
+    "details": "groq-live-smoke-results.json",
+    "history": "groq-live-history.json"
   },
   "azure_deployment": "not_executed",
   "power_bi_runtime": "not_executed",
-  "local_bicep_compile": "blocked_by_corrupt_cached_binary; covered separately by GitHub CI"
+  "local_bicep_compile": "blocked_by_corrupt_cached_binary; covered separately by GitHub CI",
+  "synthetic_regression": {
+    "passed": 49,
+    "total": 49,
+    "independent_samples": false,
+    "scope": "Developer-authored; includes existing 30 retrieval cases; overlaps with unit behavior"
+  },
+  "code_commit": "c0150389a7c447806484e3be05dd01fbd5a994ff",
+  "code_ci": {
+    "status": "pass",
+    "transitpulse": "https://github.com/Jaswanth-16/MyProjects/actions/runs/37898927311",
+    "ai_study": "https://github.com/Jaswanth-16/MyProjects/actions/runs/37898927355",
+    "free_integration": "https://github.com/Jaswanth-16/MyProjects/actions/runs/37898927297",
+    "portfolio_evaluation": "https://github.com/Jaswanth-16/MyProjects/actions/runs/37898927223",
+    "pipelinecopilot": "https://github.com/Jaswanth-16/MyProjects/actions/runs/37898453494"
+  }
 }

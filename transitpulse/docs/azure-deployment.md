@@ -122,8 +122,7 @@ the view or refresh Power BI automatically after each batch.
 | Timeout | Reduce input/state size; use asynchronous orchestration for larger workloads |
 
 Input is capped at 10 MiB; restored warehouse snapshots at 50 MiB. The HTTP handler is
-synchronous. Monitor ADF activity runs, Function logs and the audit objects. Infrastructure
-does not configure alerts or automatic orphan-snapshot cleanup. Confirm runtime/quota
+synchronous. Monitor ADF activity runs, Function logs and the audit objects. Infrastructure can optionally configure monitoring with `enableMonitoring=true`; see [operations and acceptance](operations.md). It does not configure alerts or automatic orphan-snapshot cleanup. Confirm runtime/quota
 availability and estimate costs in your chosen region before a longer-running deployment.
 
 ## Cleanup

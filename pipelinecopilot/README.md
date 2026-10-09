@@ -91,7 +91,7 @@ verification, not a claim that every sentence is a quotation or proven diagnosis
 
 ## Measured local results
 
-- **41 automated tests passed**, including real loopback HTTP requests and mocked provider transport.
+- **42 automated tests passed**, including real loopback HTTP requests and mocked provider transport.
 - **30 curated evaluation cases:** correct first runbook for 24/24 supported questions; abstention on 6/6 unrelated questions.
 - Three reproducible sample scenarios, including log redaction and insufficient evidence.
 

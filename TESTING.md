@@ -1,4 +1,4 @@
-# Verification report — 8 October 2026
+# Verification report — 9 October 2026
 
 There are four projects. Their local tests pass, but **not every integration has been tested live**. This report distinguishes executed checks from mocked checks and remaining gaps. Passing tests do not prove general AI accuracy, complete security, cloud deployment success or certification readiness.
 
@@ -6,12 +6,12 @@ There are four projects. Their local tests pass, but **not every integration has
 
 | Project | Automated suite | Other executed checks | Remaining live checks |
 |---|---:|---|---|
-| TransitPulse | 31 passed, with cloud SDK dependencies installed | Full 10,000-trip demo reconciled to 10,200 unique trips; four real Azure Blob SDK/Azurite integration tests; Chromium dashboard/filter checks; ADF/JSON/link validation | Azure deployment, managed identity/RBAC, ADLS behavior, ADF orchestration, Synapse queries, Power BI imports/DAX/RLS |
-| PipelineCopilot | 41 passed | 30/30 developer-authored retrieval cases; real local HTTP tests; Chromium samples, abstention and source links; mocked Azure and Groq response handling | Real model output and semantic grounding, Azure configuration and service errors |
+| TransitPulse | 33 passed, with cloud SDK dependencies installed | Full 10,000-trip demo reconciled to 10,200 unique trips; four real Azure Blob SDK/Azurite integration tests; Chromium dashboard/filter checks; ADF/JSON/link validation | Azure deployment, managed identity/RBAC, ADLS behavior, ADF orchestration, Synapse queries, Power BI imports/DAX/RLS |
+| PipelineCopilot | 42 passed | 30/30 developer-authored retrieval cases; real local HTTP tests; Chromium samples, abstention and source links; mocked Azure and Groq response handling | Real model output and semantic grounding, Azure configuration and service errors |
 | LogLens | 19 passed | Real local HTTP tests; Chromium structured output, unknown input, invalid input and HTML-as-text checks; valid/rejected Azure, Claude and Groq protocol fixtures | Real model extraction, provider availability and quotas |
-| OpsEvidence | 24 passed | Real local HTTP tests; Chromium incident switching, trace/evidence rendering and input recovery; mocked three-provider multi-tool loop; read-only scope, citations and budget rejection | Real model tool selection, answer quality, latency and live provider errors |
+| OpsEvidence | 25 passed | Real local HTTP tests; Chromium incident switching, trace/evidence rendering and input recovery; mocked three-provider multi-tool loop; read-only scope, citations and budget rejection | Real model tool selection, answer quality, latency and live provider errors |
 
-**115 unit/HTTP tests + 4 emulator tests + 12 browser checks = 131 passing checks.** Browser checks include mobile layout and an uncaught JavaScript-error assertion. Fixtures are synthetic; retrieval cases are small and developer-authored. These counts are checks, not independent real-world examples.
+**119 unit/HTTP tests + 4 emulator tests + 12 browser checks = 135 passing checks.** Browser checks include mobile layout and an uncaught JavaScript-error assertion. Fixtures are synthetic; retrieval cases are small and developer-authored. These counts are checks, not independent real-world examples.
 
 The emulator requests used Azure Storage Blob SDK 12.31.0 and Azurite 3.37.0 on loopback, with telemetry disabled. The browser run used Playwright 1.64.0 and packaged Chromium 153. Standard Playwright browser download was unavailable in this environment, so a packaged local Chromium was used; web security remained enabled. GitHub Actions additionally installs and tests Playwright's matched browser.
 
@@ -26,7 +26,7 @@ The local cached Bicep executable could not run because its bundle was corrupt. 
 | [Power BI Desktop](https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop) | Windows and free Desktop installation | Local CSV imports, model relationships, DAX and View as role | Not available in this Linux environment; no completed PBIX is supplied; sharing/licensing differs |
 | [Gemini Developer API](https://ai.google.dev/gemini-api/docs/pricing) | Own account/key and an eligible free-tier model | Another possible free model evaluation route | Not integrated here; model/region quotas apply; cannot substitute for provider-specific Azure/Claude tests |
 
-A user-supplied key was used transiently with `openai/gpt-oss-20b`. An initial HTTP 403 was resolved by adding an explicit application User-Agent to the adapters. The rerun passed **4 of 6 live smoke cases**: both LogLens examples, OpsEvidence run-0420 and PipelineCopilot AuthorizationPermissionMismatch. OpsEvidence run-0408 and PipelineCopilot SqlTimeout rejected live output and used labelled offline fallbacks; these count as failures, not live successes. This small synthetic suite does not establish general answer accuracy. The key was not committed or embedded in the presentation. See [sanitised live results](docs/groq-live-smoke-results.json).
+A user-supplied key was used transiently. The latest complete six-case Groq suite with `openai/gpt-oss-120b` passed **6/6 live cases** after guided evidence gathering and an explicit catalog of exact source excerpts. Earlier `openai/gpt-oss-20b` experiments were inconsistent. All earlier complete attempts are retained in [history](docs/groq-live-history.json); they are different development revisions, not independent samples or a held-out quality benchmark. Latest failures: none in this small suite. Accepted outputs satisfy the application contracts, not a proof of semantic accuracy or production reliability. No automatic retries were used. The key was not committed or embedded in deliverables. See [latest results](docs/groq-live-smoke-results.json).
 
 ## Run the free-plan AI smoke suite
 
@@ -78,6 +78,17 @@ npm run test:browser
 
 On Linux, `npx playwright install --with-deps chromium` may be required. Browser tests start/stop all three local AI servers and generate/remove a temporary TransitPulse dataset. GitHub's **Free integration verification** workflow executes browser and emulator checks without cloud credentials.
 
+## Portfolio advancements on 9 October
+
+- Added 49 developer-authored synthetic regression checks, including the existing 30 retrieval cases, with an independent CI report. These overlap with unit behavior and are not a held-out accuracy benchmark.
+- Added optional Log Analytics, Application Insights and ADF diagnostics; monitoring defaults off and has not been deployed live.
+- Added a read-only ADF status collector and fixture tests, plus deployment acceptance and operational guidance. Successful control-plane status does not establish snapshot correctness.
+- OpsEvidence now guides evidence stages and validates final Groq JSON through the same evidence contract; Azure/Claude retain native final-tool paths.
+- RAG prompts specify concise string checks, and Groq GPT-OSS adapters use model-specific low reasoning effort with bounded completion tokens.
+- Repeated live tests exposed inconsistent provider/model output. Latest and historical attempts are recorded separately; rejected output remains a failed live case.
+
+See [AI evaluation](docs/ai-evaluation.md) and [Azure operations](transitpulse/docs/operations.md).
+
 ## Issues found and addressed
 
 - Added Groq's fixed HTTPS endpoint and bearer authentication to all three AI projects; retained the existing Azure/Claude paths and default offline behavior.
@@ -88,4 +99,4 @@ On Linux, `npx playwright install --with-deps chromium` may be required. Browser
 
 ## Work still needed before a production claim
 
-Resolve the two remaining live smoke failures, evaluate outputs against a reviewed held-out set, and test actual Azure and Claude services when credentials are available. For TransitPulse, execute the Azure deployment with identity/access checks and validate the Power BI model on Windows. Production load testing, cross-user authorization, durable telemetry and independent security review are not covered by this portfolio suite.
+Evaluate outputs against a reviewed held-out set, and test actual Azure and Claude services when credentials are available. For TransitPulse, execute the Azure deployment with identity/access checks and validate the Power BI model on Windows. Production load testing, cross-user authorization, durable telemetry and independent security review are not covered by this portfolio suite.

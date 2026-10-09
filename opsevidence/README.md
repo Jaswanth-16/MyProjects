@@ -32,10 +32,14 @@ python -m unittest discover -s tests -v
 python -m compileall -q opsevidence
 ```
 
-24 tests cover offline behavior, validation, mocked provider protocols and real local HTTP requests. GitHub Actions runs both Python versions. Checked-in [demo output](docs/demo-results.json) shows synthetic/offline behavior, not an independent benchmark of AI accuracy.
+25 tests cover offline behavior, validation, mocked provider protocols and real local HTTP requests. GitHub Actions runs both Python versions. Checked-in [demo output](docs/demo-results.json) shows synthetic/offline behavior, not an independent benchmark of AI accuracy.
 
 [Study walkthrough](docs/study-guide.md) · [Certification mapping](docs/certification-map.md) · [Optional providers](docs/providers.md)
 
 ## Limits
 
 Synthetic study project, not production monitoring. Credential redaction is best effort; use the supplied fictional data. Exact-quote validation proves a quote exists, not that the model's interpretation is correct. Review all suggested checks. The local server is intended for one user on loopback, without account authentication or production deployment hardening. No resources are changed by either project. Live provider tests require separate credentials and were not run during construction.
+
+## Evidence workflow update
+
+The application guides run, statistics and runbook stages within four turns. Groq uses native gathering tools followed by JSON assessment with the same strict schema and exact-quote checks; Azure/Claude retain final-tool calls. This is a guided workflow, not unrestricted tool selection. See [evaluation and limits](../docs/ai-evaluation.md).

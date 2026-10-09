@@ -1,6 +1,6 @@
 {
   "provider": "groq",
-  "status": "fail",
+  "status": "pass",
   "scope": "Small synthetic smoke suite; not a semantic quality or production accuracy benchmark",
   "results": [
     {
@@ -11,9 +11,9 @@
       "warning": null,
       "usage": {
         "input_tokens": 516,
-        "output_tokens": 474
+        "output_tokens": 315
       },
-      "elapsed_seconds": 9.93
+      "elapsed_seconds": 5.07
     },
     {
       "project": "LogLens",
@@ -23,24 +23,24 @@
       "warning": null,
       "usage": {
         "input_tokens": 515,
-        "output_tokens": 303
+        "output_tokens": 432
       },
-      "elapsed_seconds": 5.85
+      "elapsed_seconds": 6.18
     },
     {
       "project": "OpsEvidence",
       "case": "run-0408",
-      "pass": false,
-      "mode": "offline",
-      "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+      "pass": true,
+      "mode": "groq",
+      "warning": null,
       "metrics": {
-        "model_turns": 3,
-        "live_data_tool_calls": 2,
+        "model_turns": 4,
+        "live_data_tool_calls": 3,
         "usage": {
-          "input_tokens": 3471,
-          "output_tokens": 114
+          "input_tokens": 2703,
+          "output_tokens": 676
         },
-        "elapsed_ms": 18972.22
+        "elapsed_ms": 22893.06
       }
     },
     {
@@ -53,18 +53,18 @@
         "model_turns": 4,
         "live_data_tool_calls": 3,
         "usage": {
-          "input_tokens": 4905,
-          "output_tokens": 1230
+          "input_tokens": 2670,
+          "output_tokens": 689
         },
-        "elapsed_ms": 33369.1
+        "elapsed_ms": 23329.45
       }
     },
     {
       "project": "PipelineCopilot",
       "case": "SqlTimeout",
-      "pass": false,
-      "mode": "retrieval",
-      "warning": "LLM unavailable or output rejected; showing the extractive runbook fallback."
+      "pass": true,
+      "mode": "llm",
+      "warning": null
     },
     {
       "project": "PipelineCopilot",
@@ -74,7 +74,8 @@
       "warning": null
     }
   ],
-  "model": "openai/gpt-oss-20b",
-  "successful_live_cases": 4,
-  "initial_attempt": "Default urllib User-Agent received HTTP 403; explicit application User-Agent restored API access."
+  "date": "2026-10-09",
+  "model": "openai/gpt-oss-120b",
+  "code_commit": "c0150389a7c447806484e3be05dd01fbd5a994ff",
+  "successful_live_cases": 6
 }

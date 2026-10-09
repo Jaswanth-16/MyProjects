@@ -1,0 +1,405 @@
+{
+  "scope": "Development experiments with different local revisions. Not independent samples, a held-out accuracy benchmark or best-of-retry selection. Latest complete suite is stored separately. Diagnostic calls are not included in six-case suite counts.",
+  "attempts": [
+    {
+      "provider": "groq",
+      "status": "fail",
+      "scope": "Small synthetic smoke suite; not a semantic quality or production accuracy benchmark",
+      "results": [
+        {
+          "project": "LogLens",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 516,
+            "output_tokens": 474
+          },
+          "elapsed_seconds": 9.93
+        },
+        {
+          "project": "LogLens",
+          "case": "SqlTimeout",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 515,
+            "output_tokens": 303
+          },
+          "elapsed_seconds": 5.85
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0408",
+          "pass": false,
+          "mode": "offline",
+          "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+          "metrics": {
+            "model_turns": 3,
+            "live_data_tool_calls": 2,
+            "usage": {
+              "input_tokens": 3471,
+              "output_tokens": 114
+            },
+            "elapsed_ms": 18972.22
+          }
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0420",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "metrics": {
+            "model_turns": 4,
+            "live_data_tool_calls": 3,
+            "usage": {
+              "input_tokens": 4905,
+              "output_tokens": 1230
+            },
+            "elapsed_ms": 33369.1
+          }
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "SqlTimeout",
+          "pass": false,
+          "mode": "retrieval",
+          "warning": "LLM unavailable or output rejected; showing the extractive runbook fallback."
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "llm",
+          "warning": null
+        }
+      ],
+      "model": "openai/gpt-oss-20b",
+      "phase": "2026-10-08 native tool path",
+      "successful_live_cases": 4
+    },
+    {
+      "provider": "groq",
+      "status": "fail",
+      "scope": "Small synthetic smoke suite; not a semantic quality or production accuracy benchmark",
+      "results": [
+        {
+          "project": "LogLens",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 516,
+            "output_tokens": 364
+          },
+          "elapsed_seconds": 6.29
+        },
+        {
+          "project": "LogLens",
+          "case": "SqlTimeout",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 515,
+            "output_tokens": 411
+          },
+          "elapsed_seconds": 5.78
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0408",
+          "pass": false,
+          "mode": "offline",
+          "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+          "metrics": {
+            "model_turns": 4,
+            "live_data_tool_calls": 3,
+            "usage": {
+              "input_tokens": 1617,
+              "output_tokens": 95
+            },
+            "elapsed_ms": 22214.89
+          }
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0420",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "metrics": {
+            "model_turns": 4,
+            "live_data_tool_calls": 3,
+            "usage": {
+              "input_tokens": 2901,
+              "output_tokens": 480
+            },
+            "elapsed_ms": 21943.19
+          }
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "SqlTimeout",
+          "pass": false,
+          "mode": "retrieval",
+          "warning": "LLM unavailable or output rejected; showing the extractive runbook fallback."
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "llm",
+          "warning": null
+        }
+      ],
+      "model": "openai/gpt-oss-20b",
+      "phase": "2026-10-09 withheld final tool, low reasoning",
+      "successful_live_cases": 4
+    },
+    {
+      "provider": "groq",
+      "status": "fail",
+      "scope": "Small synthetic smoke suite; not a semantic quality or production accuracy benchmark",
+      "results": [
+        {
+          "project": "LogLens",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 516,
+            "output_tokens": 297
+          },
+          "elapsed_seconds": 4.69
+        },
+        {
+          "project": "LogLens",
+          "case": "SqlTimeout",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 515,
+            "output_tokens": 472
+          },
+          "elapsed_seconds": 5.8
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0408",
+          "pass": false,
+          "mode": "offline",
+          "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+          "metrics": {
+            "model_turns": 4,
+            "live_data_tool_calls": 3,
+            "usage": {
+              "input_tokens": 1617,
+              "output_tokens": 98
+            },
+            "elapsed_ms": 22034.48
+          }
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0420",
+          "pass": false,
+          "mode": "offline",
+          "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+          "metrics": {
+            "model_turns": 4,
+            "live_data_tool_calls": 3,
+            "usage": {
+              "input_tokens": 1610,
+              "output_tokens": 101
+            },
+            "elapsed_ms": 21812.5
+          }
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "SqlTimeout",
+          "pass": false,
+          "mode": "retrieval",
+          "warning": "LLM unavailable or output rejected; showing the extractive runbook fallback."
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "llm",
+          "warning": null
+        }
+      ],
+      "model": "openai/gpt-oss-20b",
+      "phase": "Experimental JSON final with tool history",
+      "successful_live_cases": 3
+    },
+    {
+      "provider": "groq",
+      "status": "fail",
+      "scope": "Small synthetic smoke suite; not a semantic quality or production accuracy benchmark",
+      "results": [
+        {
+          "project": "LogLens",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 516,
+            "output_tokens": 659
+          },
+          "elapsed_seconds": 6.07
+        },
+        {
+          "project": "LogLens",
+          "case": "SqlTimeout",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 515,
+            "output_tokens": 288
+          },
+          "elapsed_seconds": 5.49
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0408",
+          "pass": false,
+          "mode": "offline",
+          "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+          "metrics": {
+            "model_turns": 3,
+            "live_data_tool_calls": 2,
+            "usage": {
+              "input_tokens": 742,
+              "output_tokens": 81
+            },
+            "elapsed_ms": 15924.93
+          }
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0420",
+          "pass": false,
+          "mode": "offline",
+          "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+          "metrics": {
+            "model_turns": 4,
+            "live_data_tool_calls": 3,
+            "usage": {
+              "input_tokens": 2364,
+              "output_tokens": 687
+            },
+            "elapsed_ms": 20640.16
+          }
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "SqlTimeout",
+          "pass": true,
+          "mode": "llm",
+          "warning": null
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": false,
+          "mode": "retrieval",
+          "warning": "LLM unavailable or output rejected; showing the extractive runbook fallback."
+        }
+      ],
+      "model": "openai/gpt-oss-20b",
+      "phase": "Guided collection and isolated JSON final",
+      "successful_live_cases": 3
+    },
+    {
+      "provider": "groq",
+      "status": "fail",
+      "scope": "Small synthetic smoke suite; not a semantic quality or production accuracy benchmark",
+      "results": [
+        {
+          "project": "LogLens",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 516,
+            "output_tokens": 262
+          },
+          "elapsed_seconds": 5.96
+        },
+        {
+          "project": "LogLens",
+          "case": "SqlTimeout",
+          "pass": true,
+          "mode": "groq",
+          "warning": null,
+          "usage": {
+            "input_tokens": 515,
+            "output_tokens": 418
+          },
+          "elapsed_seconds": 6.7
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0408",
+          "pass": false,
+          "mode": "offline",
+          "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+          "metrics": {
+            "model_turns": 4,
+            "live_data_tool_calls": 3,
+            "usage": {
+              "input_tokens": 2384,
+              "output_tokens": 664
+            },
+            "elapsed_ms": 23242.0
+          }
+        },
+        {
+          "project": "OpsEvidence",
+          "case": "run-0420",
+          "pass": false,
+          "mode": "offline",
+          "warning": "Live provider failed or violated the evidence/turn contract; showing the deterministic tool replay.",
+          "metrics": {
+            "model_turns": 4,
+            "live_data_tool_calls": 3,
+            "usage": {
+              "input_tokens": 2364,
+              "output_tokens": 643
+            },
+            "elapsed_ms": 22765.29
+          }
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "SqlTimeout",
+          "pass": true,
+          "mode": "llm",
+          "warning": null
+        },
+        {
+          "project": "PipelineCopilot",
+          "case": "AuthorizationPermissionMismatch",
+          "pass": true,
+          "mode": "llm",
+          "warning": null
+        }
+      ],
+      "model": "openai/gpt-oss-120b",
+      "phase": "Guided collection before exact quote catalog",
+      "successful_live_cases": 4
+    }
+  ]
+}

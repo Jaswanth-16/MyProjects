@@ -6,9 +6,11 @@ structured brief from an optional LLM, and rejects unsupported quotations or
 unknown citations before returning output.
 
 **Offline mode is extractive retrieval, not generative AI.** Groq mode uses a
-real chat-completions adapter, but requires your own current key/model. A local
-HTTP integration test verifies request/response behavior; it is not proof of a
-live model run. No existing exposed API key is stored in this project.
+real chat-completions adapter and requires your own current key/model. A live
+smoke run on 2026-10-16 passed five answer cases using `openai/gpt-oss-120b`,
+plus two locally blocked/irrelevant queries. [Results](docs/live-smoke-results.json)
+retain validated source quotes; [initial failures](docs/live-smoke-initial.json)
+are preserved separately. No API key is stored in this project.
 
 ## How it works
 
@@ -68,6 +70,15 @@ Only use documents approved for transmission to an external provider. Live
 results must report `mode: groq_llm`; `offline_extractive` is never a live pass.
 The command exits with code 2 for rejected responses and never overwrites an
 existing output file.
+
+To run the live smoke suite without putting a key in shell history:
+
+```bash
+python scripts/evaluate_live.py --prompt-key --model openai/gpt-oss-120b --output live-output/smoke.json
+```
+
+The terminal prompt hides the key. Reports distinguish actual API answers from
+local abstention checks; a failed run exits nonzero and is never overwritten.
 
 ## Connect ClientPulse findings
 

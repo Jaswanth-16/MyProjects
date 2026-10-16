@@ -79,6 +79,7 @@ def test_real_http_adapter_and_quote_validation(retriever):
     received = []
     class Handler(BaseHTTPRequestHandler):
         def do_POST(self):
+            assert self.headers.get("User-Agent") == "EvidenceBrief/0.1"
             body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
             received.append(body)
             context = json.loads(body["messages"][1]["content"])["evidence"][0]

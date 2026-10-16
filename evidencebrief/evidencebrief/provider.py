@@ -22,7 +22,9 @@ class GroqClient:
         request = urllib.request.Request(self.endpoint, data=json.dumps({
             "model": self.model, "messages": messages, "temperature": 0,
             "max_completion_tokens": 700, "response_format": {"type": "json_object"}
-        }).encode(), headers={"Authorization": "Bearer " + self.key, "Content-Type": "application/json"})
+        }).encode(), headers={"Authorization": "Bearer " + self.key,
+                             "Content-Type": "application/json", "Accept": "application/json",
+                             "User-Agent": "EvidenceBrief/0.1"})
         try:
             opener = urllib.request.build_opener(NoRedirect)
             with opener.open(request, timeout=25) as response:
@@ -33,6 +35,10 @@ class GroqClient:
             if outer["choices"][0].get("finish_reason") != "stop":
                 raise ValueError("Incomplete model response")
             return json.loads(outer["choices"][0]["message"]["content"])
-        except (urllib.error.URLError, OSError, KeyError, IndexError, TypeError, json.JSONDecodeError) as error:
+        except urllib.error.HTTPError as error:
+            raise RuntimeError(f"Provider HTTP {error.code}") from None
+        except (urllib.error.URLError, OSError) as error:
+            raise RuntimeError("Provider network failure") from None
+        except (KeyError, IndexError, TypeError, json.JSONDecodeError) as error:
             # Never expose headers, API keys, source text or the provider body.
             raise RuntimeError("Provider request failed") from None

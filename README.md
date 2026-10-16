@@ -6,6 +6,7 @@ I am Jaswanth, an Azure Data and BI Engineer at Accenture. This portfolio connec
 
 | Project | Capability | Demonstration |
 |---|---|---|
+| [CaseLake](caselake/) | Databricks-first PySpark/Delta lakehouse, MLflow and trained AI ticket routing | Replay-safe Bronze/Silver/Gold, quarantine and human-review suggestions |
 | [TransitPulse](transitpulse/) | Incremental Python/SQL, corrections, quarantine, optional Azure assets | 10,000 initial trips become 10,200; replay skips |
 | [OpsEvidence](opsevidence/) | Read-only tool agent, scoped statistics and evidence validation | Five incident families over 420 synthetic runs |
 | [PipelineCopilot](pipelinecopilot/) | RAG, BM25 retrieval, citations, redaction and abstention | Eight runbooks, 30 curated retrieval cases |

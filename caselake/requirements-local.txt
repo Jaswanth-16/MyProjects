@@ -1,0 +1,8 @@
+# Local verification; Databricks provides Spark and Delta. Do not install these
+# into a Databricks notebook/serverless environment.
+pyspark==3.5.3
+delta-spark==3.2.1
+scikit-learn==1.5.2
+mlflow-skinny==2.22.0
+pytest==8.3.5
+PyYAML==6.0.3

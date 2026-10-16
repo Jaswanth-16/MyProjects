@@ -1,0 +1,64 @@
+{
+  "mode": "local_spark_delta",
+  "input_events": 130,
+  "dataset_scope": "synthetic_only_not_customer_accuracy",
+  "first_run": {
+    "bronze": 127,
+    "silver": 120,
+    "quarantine": 6
+  },
+  "replay": {
+    "bronze": 127,
+    "silver": 120,
+    "quarantine": 6
+  },
+  "replay_passed": true,
+  "model": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "train_rows": 90,
+    "test_rows": 30,
+    "labels": [
+      "access",
+      "billing",
+      "delivery"
+    ],
+    "confusion_matrix": [
+      [
+        10,
+        0,
+        0
+      ],
+      [
+        0,
+        10,
+        0
+      ],
+      [
+        0,
+        0,
+        10
+      ]
+    ]
+  },
+  "mlflow_run_id": "dd1d50ded3894429bf62d6b6259ca4ec",
+  "predictions": 120,
+  "gold_ai_delta_rows": 120,
+  "human_review": 30,
+  "databricks_workspace_run": "not_executed",
+  "automated_tests": {
+    "tests": "16",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "62.722"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "spark": "3.5.3",
+    "delta": "3.2.1",
+    "java": "17",
+    "scikit_learn": "1.5.2",
+    "mlflow": "2.22.0"
+  }
+}

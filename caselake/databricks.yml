@@ -1,0 +1,47 @@
+bundle:
+  name: caselake
+
+variables:
+  catalog:
+    description: Existing Unity Catalog catalog where you can create a schema
+    default: workspace
+  schema:
+    description: Dedicated schema for synthetic CaseLake data only
+    default: caselake_demo
+
+resources:
+  jobs:
+    caselake:
+      name: CaseLake Databricks AI Ticket Lakehouse
+      max_concurrent_runs: 1
+      parameters:
+        - name: catalog
+          default: ${var.catalog}
+        - name: schema
+          default: ${var.schema}
+        - name: project_root
+          default: ${workspace.file_path}
+      tasks:
+        - task_key: ingest
+          notebook_task:
+            notebook_path: ./notebooks/01_ingest.py
+        - task_key: curate
+          depends_on:
+            - task_key: ingest
+          notebook_task:
+            notebook_path: ./notebooks/02_curate.py
+        - task_key: train
+          depends_on:
+            - task_key: curate
+          notebook_task:
+            notebook_path: ./notebooks/03_train.py
+        - task_key: score
+          depends_on:
+            - task_key: train
+          notebook_task:
+            notebook_path: ./notebooks/04_score.py
+
+targets:
+  dev:
+    default: true
+    mode: development

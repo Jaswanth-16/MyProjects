@@ -1,0 +1,60 @@
+{
+  "dataset": "synthetic_client_retention_v1",
+  "customers": 600,
+  "quality": {
+    "customer_rows": 0,
+    "usage_rows": 1
+  },
+  "model": {
+    "roc_auc": 0.7494929006085193,
+    "baseline_roc_auc": 0.5,
+    "f1": 0.45454545454545453,
+    "roc_auc_bootstrap_95_interval": [
+      0.6431349959338575,
+      0.8416302880672497
+    ],
+    "confusion_matrix": [
+      [
+        82,
+        34
+      ],
+      [
+        14,
+        20
+      ]
+    ],
+    "train_customers": 450,
+    "test_customers": 150,
+    "feature_importance": {
+      "segment": 0.0034989858012170584,
+      "tenure_months": 0.0002535496957403405,
+      "active_days": 0.1790567951318458,
+      "support_calls": 0.04340770791075053,
+      "monthly_spend": -0.00020283975659227683
+    }
+  },
+  "statistics": {
+    "test": "chi_square_segment_churn",
+    "statistic": 2.3506982368544236,
+    "p_value": 0.3087111841093444,
+    "minimum_expected_cell_count": 40.8,
+    "interpretation": "Exploratory association only; not causation or a confirmatory test"
+  },
+  "segment_summary": [
+    {
+      "segment": "enterprise",
+      "count": 195,
+      "churn_rate": 0.2205128205128205
+    },
+    {
+      "segment": "mid",
+      "count": 180,
+      "churn_rate": 0.19444444444444445
+    },
+    {
+      "segment": "small",
+      "count": 225,
+      "churn_rate": 0.2577777777777778
+    }
+  ]
+}

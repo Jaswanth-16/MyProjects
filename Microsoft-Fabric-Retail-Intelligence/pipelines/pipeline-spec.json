@@ -1,0 +1,11 @@
+{
+  "name": "pl_retail_daily", "type": "implementation-blueprint-not-deployable",
+  "steps": [
+    {"name":"copy_csv_to_onelake", "activity":"Copy data", "destination":"Files/raw", "dependsOn":[]},
+    {"name":"bronze", "activity":"Notebook", "path":"notebooks/01_bronze_ingestion.py", "dependsOn":["copy_csv_to_onelake"]},
+    {"name":"silver", "activity":"Notebook", "path":"notebooks/02_silver_transformation.py", "dependsOn":["bronze"]},
+    {"name":"quality", "activity":"Notebook", "path":"notebooks/03_data_quality.py", "dependsOn":["silver"]},
+    {"name":"gold", "activity":"Notebook", "path":"notebooks/04_gold_aggregation.py", "dependsOn":["quality"]}
+  ],
+  "notes":"Create activities in Fabric UI, configure retries and daily schedule. This is a portable blueprint, not Fabric-exported pipeline JSON."
+}

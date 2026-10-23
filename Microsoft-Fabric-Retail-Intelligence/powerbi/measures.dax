@@ -1,0 +1,4 @@
+Total Revenue = SUM(gold_daily_sales[total_revenue])
+Units Sold = SUM(gold_daily_sales[units_sold])
+Transactions = SUM(gold_daily_sales[transactions])
+Average Order Value = DIVIDE([Total Revenue], [Transactions])

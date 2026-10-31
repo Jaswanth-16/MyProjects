@@ -133,30 +133,44 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     else:
         analyst = investigator
 
-    @app.middleware("http")
-    async def enforce_body_limit(request: Request, call_next):
-        if request.method in ("POST", "PUT", "PATCH"):
-            from fastapi.responses import JSONResponse
-            max_bytes = 5_000_000
-            header = request.headers.get("content-length")
-            if header is not None:
+    class BodyLimitMiddleware:
+        def __init__(self, wrapped, max_bytes: int = 5_000_000):
+            self.wrapped = wrapped
+            self.max_bytes = max_bytes
+
+        async def __call__(self, scope, receive, send):
+            if scope["type"] != "http" or scope.get("method") not in ("POST", "PUT", "PATCH"):
+                await self.wrapped(scope, receive, send)
+                return
+            from starlette.responses import JSONResponse
+            headers = dict(scope.get("headers", []))
+            length = headers.get(b"content-length")
+            if length is not None:
                 try:
-                    if int(header) > max_bytes:
-                        return JSONResponse(status_code=413, content={"detail": "Request too large"})
+                    if int(length) > self.max_bytes:
+                        await JSONResponse({"detail": "Request too large"}, status_code=413)(scope, receive, send)
+                        return
                 except ValueError:
-                    return JSONResponse(status_code=400, content={"detail": "Invalid Content-Length"})
-            consumed = 0
-            chunks = []
-            async for chunk in request.stream():
-                consumed += len(chunk)
-                if consumed > max_bytes:
-                    return JSONResponse(status_code=413, content={"detail": "Request too large"})
-                chunks.append(chunk)
-            body = b"".join(chunks)
-            async def receive():
-                return {"type": "http.request", "body": body, "more_body": False}
-            request._receive = receive
-        return await call_next(request)
+                    await JSONResponse({"detail": "Invalid Content-Length"}, status_code=400)(scope, receive, send)
+                    return
+            total = 0
+            async def limited_receive():
+                nonlocal total
+                message = await receive()
+                if message["type"] == "http.request":
+                    total += len(message.get("body", b""))
+                    if total > self.max_bytes:
+                        raise BodyTooLarge()
+                return message
+            try:
+                await self.wrapped(scope, limited_receive, send)
+            except BodyTooLarge:
+                await JSONResponse({"detail": "Request too large"}, status_code=413)(scope, receive, send)
+
+    class BodyTooLarge(Exception):
+        pass
+
+    app.add_middleware(BodyLimitMiddleware)
 
     @app.get("/dashboard", include_in_schema=False)
     def dashboard() -> FileResponse:

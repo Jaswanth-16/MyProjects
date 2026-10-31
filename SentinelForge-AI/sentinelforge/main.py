@@ -4,10 +4,12 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from enum import Enum
 from hashlib import sha256
+import os
+import secrets
 from threading import Lock
 from typing import Protocol
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -103,7 +105,18 @@ class InMemoryStore:
 
 def create_app(store: InMemoryStore | None = None, investigator: Investigator | None = None) -> FastAPI:
     app = FastAPI(title="SentinelForge AI", version="0.1.0")
-    database = store if store is not None else InMemoryStore()
+    if store is not None:
+        database = store
+    elif os.getenv('SENTINELFORGE_DB_PATH'):
+        from sentinelforge.persistence import SQLiteStore
+        database = SQLiteStore(os.environ['SENTINELFORGE_DB_PATH'])
+    else:
+        database = InMemoryStore()
+
+    def require_token(authorization: str | None = Header(default=None)) -> None:
+        expected = os.getenv('SENTINELFORGE_API_TOKEN')
+        if expected and (not authorization or not secrets.compare_digest(authorization, 'Bearer ' + expected)):
+            raise HTTPException(status_code=401, detail='Unauthorized')
     if investigator is None:
         from sentinelforge.ai import configured_investigator
         analyst = configured_investigator()
@@ -114,15 +127,15 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     def health() -> dict[str, str]:
         return {"status": "ok"}
 
-    @app.post("/findings", response_model=Finding, status_code=201)
+    @app.post("/findings", response_model=Finding, status_code=201, dependencies=[Depends(require_token)])
     def ingest(payload: FindingInput) -> Finding:
         return database.add(payload)
 
-    @app.get("/findings", response_model=list[Finding])
+    @app.get("/findings", response_model=list[Finding], dependencies=[Depends(require_token)])
     def list_findings() -> list[Finding]:
         return database.list()
 
-    @app.get("/findings/{finding_id}/investigation")
+    @app.get("/findings/{finding_id}/investigation", dependencies=[Depends(require_token)])
     def investigate(finding_id: str) -> dict[str, str]:
         item = database.get(finding_id)
         if item is None:

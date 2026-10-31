@@ -10,7 +10,7 @@ from pathlib import Path
 from threading import Lock
 from typing import Protocol
 
-from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi import Body, Depends, FastAPI, Header, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, field_validator
 
@@ -136,6 +136,19 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     @app.post("/findings", response_model=Finding, status_code=201, dependencies=[Depends(require_token)])
     def ingest(payload: FindingInput) -> Finding:
         return database.add(payload)
+
+    @app.post("/scanner-reports/{scanner}", response_model=list[Finding], status_code=201,
+              dependencies=[Depends(require_token)])
+    def import_scanner_report(scanner: str, authorized_scope: str,
+                              report: dict | list = Body(...)) -> list[Finding]:
+        from sentinelforge.scanners import ScannerImportError, parse_report
+        try:
+            findings = parse_report(scanner, report, authorized_scope)
+        except (ScannerImportError, AttributeError, TypeError) as exc:
+            raise HTTPException(status_code=422, detail="Invalid scanner report") from exc
+        if len(findings) > 1000:
+            raise HTTPException(status_code=413, detail="Too many findings")
+        return [database.add(item) for item in findings]
 
     @app.get("/findings", response_model=list[Finding], dependencies=[Depends(require_token)])
     def list_findings() -> list[Finding]:

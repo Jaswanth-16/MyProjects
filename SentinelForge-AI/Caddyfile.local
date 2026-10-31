@@ -1,0 +1,11 @@
+https://localhost:8443 {
+    tls internal
+    bind 127.0.0.1
+    reverse_proxy 127.0.0.1:8000
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy no-referrer
+        X-Frame-Options DENY
+        Cache-Control no-store
+    }
+}

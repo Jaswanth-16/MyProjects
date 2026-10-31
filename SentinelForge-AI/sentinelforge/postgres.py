@@ -10,11 +10,8 @@ class PostgresStore:
     def __init__(self, dsn: str):
         import psycopg
         self.dsn = dsn
-        with psycopg.connect(self.dsn) as conn:
-            conn.execute("""CREATE TABLE IF NOT EXISTS sentinelforge_findings (
-                id VARCHAR(20) PRIMARY KEY,
-                payload JSONB NOT NULL
-            )""")
+        from sentinelforge.migrations import apply_migrations
+        apply_migrations(self.dsn)
 
     def add(self, payload: FindingInput) -> Finding:
         import psycopg

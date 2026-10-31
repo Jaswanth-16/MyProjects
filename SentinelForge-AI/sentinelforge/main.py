@@ -104,7 +104,11 @@ class InMemoryStore:
 def create_app(store: InMemoryStore | None = None, investigator: Investigator | None = None) -> FastAPI:
     app = FastAPI(title="SentinelForge AI", version="0.1.0")
     database = store if store is not None else InMemoryStore()
-    analyst = investigator if investigator is not None else DeterministicInvestigator()
+    if investigator is None:
+        from sentinelforge.ai import configured_investigator
+        analyst = configured_investigator()
+    else:
+        analyst = investigator
 
     @app.get("/health")
     def health() -> dict[str, str]:

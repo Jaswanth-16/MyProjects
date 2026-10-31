@@ -107,6 +107,9 @@ class InMemoryStore:
 
 def create_app(store: InMemoryStore | None = None, investigator: Investigator | None = None) -> FastAPI:
     app = FastAPI(title="SentinelForge AI", version="0.1.0")
+    signing_secret = os.getenv("SENTINELFORGE_SIGNING_SECRET")
+    if signing_secret and len(signing_secret) < 32:
+        raise ValueError("SENTINELFORGE_SIGNING_SECRET must be at least 32 characters")
     if store is not None:
         database = store
     elif os.getenv('SENTINELFORGE_DATABASE_URL'):

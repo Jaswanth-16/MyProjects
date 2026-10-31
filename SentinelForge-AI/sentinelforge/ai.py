@@ -9,7 +9,10 @@ import os
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from sentinelforge.main import DeterministicInvestigator, Finding
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from sentinelforge.main import Finding
 
 
 class OllamaInvestigator:
@@ -19,6 +22,7 @@ class OllamaInvestigator:
             raise ValueError("Only local Ollama endpoints on port 11434 are supported")
         self.model = model
         self.endpoint = endpoint.rstrip("/")
+        from sentinelforge.main import DeterministicInvestigator
         self.fallback = DeterministicInvestigator()
 
     def explain(self, finding: Finding) -> dict[str, str]:
@@ -67,4 +71,5 @@ def configured_investigator():
     """No network call unless explicitly opted into local Ollama."""
     if os.getenv("SENTINELFORGE_AI_PROVIDER", "deterministic").lower() == "ollama":
         return OllamaInvestigator(model=os.getenv("SENTINELFORGE_OLLAMA_MODEL", "llama3.2:3b"))
+    from sentinelforge.main import DeterministicInvestigator
     return DeterministicInvestigator()

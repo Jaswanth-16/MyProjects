@@ -138,7 +138,10 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
 
     @app.post("/findings", response_model=Finding, status_code=201, dependencies=[Depends(require_token)])
     def ingest(payload: FindingInput) -> Finding:
-        return database.add(payload)
+        from sentinelforge.audit import record
+        item = database.add(payload)
+        record('finding_ingested', finding_id=item.id, source=item.source)
+        return item
 
     @app.post("/scanner-reports/{scanner}", response_model=list[Finding], status_code=201,
               dependencies=[Depends(require_token)])
@@ -151,7 +154,10 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
             raise HTTPException(status_code=422, detail="Invalid scanner report") from exc
         if len(findings) > 1000:
             raise HTTPException(status_code=413, detail="Too many findings")
-        return [database.add(item) for item in findings]
+        from sentinelforge.audit import record
+        stored = [database.add(item) for item in findings]
+        record('scanner_report_imported', source=scanner)
+        return stored
 
     @app.get("/findings", response_model=list[Finding], dependencies=[Depends(require_token)])
     def list_findings() -> list[Finding]:
@@ -162,6 +168,8 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
         item = database.get(finding_id)
         if item is None:
             raise HTTPException(status_code=404, detail="Finding not found")
+        from sentinelforge.audit import record
+        record('finding_investigated', finding_id=item.id, source=item.source)
         return analyst.explain(item)
 
     return app

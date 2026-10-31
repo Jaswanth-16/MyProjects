@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import csv
+import io
 from enum import Enum
 from hashlib import sha256
 import os
@@ -11,7 +13,7 @@ from threading import Lock
 from typing import Protocol
 
 from fastapi import Body, Depends, FastAPI, Header, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -237,6 +239,29 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     def list_findings(claims: dict | None = Depends(require_token)) -> list[Finding]:
         items = database.list()
         return [item for item in items if item.authorized_scope == claims["scope"]] if claims else items
+
+    @app.get("/findings/export.csv", dependencies=[Depends(require_token)])
+    def export_findings(claims: dict | None = Depends(require_token)) -> StreamingResponse:
+        """CSV export for BI; protects spreadsheet applications from formula injection."""
+        columns = ["id", "source", "rule_id", "resource", "severity", "title",
+                   "evidence", "recommendation", "authorized_scope", "risk_score", "recorded_at"]
+        def safe_cell(value: object) -> str:
+            raw = str(value)
+            if raw.lstrip().startswith(("=", "+", "-", "@", "\\t", "\\r", "\\n")):
+                return "'" + raw
+            return raw
+        output = io.StringIO()
+        writer = csv.writer(output)
+        writer.writerow(columns)
+        for finding in database.list():
+            if claims is not None and finding.authorized_scope != claims["scope"]:
+                continue
+            data = finding.model_dump(mode="json")
+            writer.writerow([safe_cell(data[column]) for column in columns])
+        output.seek(0)
+        return StreamingResponse(iter([output.getvalue()]), media_type="text/csv",
+                                 headers={"Content-Disposition": "attachment; filename=sentinelforge-findings.csv",
+                                          "Cache-Control": "no-store"})
 
     @app.get("/findings/{finding_id}/investigation", dependencies=[Depends(require_token)])
     def investigate(finding_id: str, claims: dict | None = Depends(require_token)) -> dict[str, str]:

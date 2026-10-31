@@ -13,6 +13,9 @@ dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "pydantic>=2,<3"]
 postgres = ["psycopg[binary]>=3.2,<4"]
 dev = ["pytest>=8,<10", "httpx>=0.27,<1", "ruff>=0.7,<1"]
 
+[tool.setuptools.package-data]
+sentinelforge = ["dashboard.html"]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["sentinelforge*"]

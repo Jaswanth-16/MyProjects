@@ -133,6 +133,31 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     else:
         analyst = investigator
 
+    @app.middleware("http")
+    async def enforce_body_limit(request: Request, call_next):
+        if request.method in ("POST", "PUT", "PATCH"):
+            from fastapi.responses import JSONResponse
+            max_bytes = 5_000_000
+            header = request.headers.get("content-length")
+            if header is not None:
+                try:
+                    if int(header) > max_bytes:
+                        return JSONResponse(status_code=413, content={"detail": "Request too large"})
+                except ValueError:
+                    return JSONResponse(status_code=400, content={"detail": "Invalid Content-Length"})
+            consumed = 0
+            chunks = []
+            async for chunk in request.stream():
+                consumed += len(chunk)
+                if consumed > max_bytes:
+                    return JSONResponse(status_code=413, content={"detail": "Request too large"})
+                chunks.append(chunk)
+            body = b"".join(chunks)
+            async def receive():
+                return {"type": "http.request", "body": body, "more_body": False}
+            request._receive = receive
+        return await call_next(request)
+
     @app.get("/dashboard", include_in_schema=False)
     def dashboard() -> FileResponse:
         return FileResponse(Path(__file__).with_name("dashboard.html"))

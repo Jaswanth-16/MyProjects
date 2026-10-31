@@ -10,7 +10,7 @@ from pathlib import Path
 from threading import Lock
 from typing import Protocol
 
-from fastapi import Body, Depends, FastAPI, Header, HTTPException
+from fastapi import Body, Depends, FastAPI, Header, HTTPException, Request
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, field_validator
 
@@ -118,10 +118,15 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     else:
         database = InMemoryStore()
 
-    def require_token(authorization: str | None = Header(default=None)) -> None:
+    from sentinelforge.rate_limit import RateLimiter
+    limiter = RateLimiter(limit=120, window_seconds=60)
+
+    def require_token(request: Request, authorization: str | None = Header(default=None)) -> None:
         expected = os.getenv('SENTINELFORGE_API_TOKEN')
         if expected and (not authorization or not secrets.compare_digest(authorization, 'Bearer ' + expected)):
             raise HTTPException(status_code=401, detail='Unauthorized')
+        if not limiter.allow(request.client.host if request.client else 'unknown'):
+            raise HTTPException(status_code=429, detail='Rate limit exceeded')
     if investigator is None:
         from sentinelforge.ai import configured_investigator
         analyst = configured_investigator()

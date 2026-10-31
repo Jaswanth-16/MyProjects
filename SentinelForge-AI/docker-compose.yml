@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: sentinelforge
+      POSTGRES_USER: sentinelforge
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in your environment}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sentinelforge"]
+      interval: 5s
+      retries: 10
+  api:
+    build: .
+    environment:
+      SENTINELFORGE_DATABASE_URL: postgresql://sentinelforge:${POSTGRES_PASSWORD}@db:5432/sentinelforge
+      SENTINELFORGE_API_TOKEN: ${SENTINELFORGE_API_TOKEN:?Set SENTINELFORGE_API_TOKEN in your environment}
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  pgdata:

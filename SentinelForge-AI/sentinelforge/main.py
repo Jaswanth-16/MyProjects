@@ -6,10 +6,12 @@ from enum import Enum
 from hashlib import sha256
 import os
 import secrets
+from pathlib import Path
 from threading import Lock
 from typing import Protocol
 
 from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -122,6 +124,10 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
         analyst = configured_investigator()
     else:
         analyst = investigator
+
+    @app.get("/dashboard", include_in_schema=False)
+    def dashboard() -> FileResponse:
+        return FileResponse(Path(__file__).with_name("dashboard.html"))
 
     @app.get("/health")
     def health() -> dict[str, str]:

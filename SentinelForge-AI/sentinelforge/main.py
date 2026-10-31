@@ -121,12 +121,30 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     from sentinelforge.rate_limit import RateLimiter
     limiter = RateLimiter(limit=120, window_seconds=60)
 
-    def require_token(request: Request, authorization: str | None = Header(default=None)) -> None:
-        expected = os.getenv('SENTINELFORGE_API_TOKEN')
-        if expected and (not authorization or not secrets.compare_digest(authorization, 'Bearer ' + expected)):
-            raise HTTPException(status_code=401, detail='Unauthorized')
-        if not limiter.allow(request.client.host if request.client else 'unknown'):
-            raise HTTPException(status_code=429, detail='Rate limit exceeded')
+    def require_token(request: Request, authorization: str | None = Header(default=None)) -> dict | None:
+        expected = os.getenv("SENTINELFORGE_API_TOKEN")
+        signing_secret = os.getenv("SENTINELFORGE_SIGNING_SECRET")
+        if signing_secret and len(signing_secret) < 32:
+            raise RuntimeError("SENTINELFORGE_SIGNING_SECRET must be at least 32 characters")
+        claims = None
+        if signing_secret:
+            from sentinelforge.tokens import TokenError, verify_token
+            try:
+                if not authorization or not authorization.startswith("Bearer "):
+                    raise TokenError("Missing token")
+                claims = verify_token(signing_secret, authorization[7:])
+            except TokenError as exc:
+                raise HTTPException(status_code=401, detail="Unauthorized") from exc
+        elif expected and (not authorization or not secrets.compare_digest(authorization, "Bearer " + expected)):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+        if not limiter.allow(request.client.host if request.client else "unknown"):
+            raise HTTPException(status_code=429, detail="Rate limit exceeded")
+        return claims
+
+    def authorize_scope(scope: str, claims: dict | None) -> None:
+        if claims is not None and claims["scope"] != scope:
+            raise HTTPException(status_code=403, detail="Scope access denied")
+
     if investigator is None:
         from sentinelforge.ai import configured_investigator
         analyst = configured_investigator()
@@ -187,7 +205,8 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
         return {"status": "ok"}
 
     @app.post("/findings", response_model=Finding, status_code=201, dependencies=[Depends(require_token)])
-    def ingest(payload: FindingInput) -> Finding:
+    def ingest(payload: FindingInput, claims: dict | None = Depends(require_token)) -> Finding:
+        authorize_scope(payload.authorized_scope, claims)
         from sentinelforge.audit import record
         item = database.add(payload)
         record('finding_ingested', finding_id=item.id, source=item.source)
@@ -196,7 +215,9 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     @app.post("/scanner-reports/{scanner}", response_model=list[Finding], status_code=201,
               dependencies=[Depends(require_token)])
     def import_scanner_report(scanner: str, authorized_scope: str,
-                              report: dict | list = Body(...)) -> list[Finding]:
+                              report: dict | list = Body(...),
+                              claims: dict | None = Depends(require_token)) -> list[Finding]:
+        authorize_scope(authorized_scope, claims)
         from sentinelforge.scanners import ScannerImportError, parse_report
         try:
             findings = parse_report(scanner, report, authorized_scope)
@@ -210,13 +231,14 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
         return stored
 
     @app.get("/findings", response_model=list[Finding], dependencies=[Depends(require_token)])
-    def list_findings() -> list[Finding]:
-        return database.list()
+    def list_findings(claims: dict | None = Depends(require_token)) -> list[Finding]:
+        items = database.list()
+        return [item for item in items if item.authorized_scope == claims["scope"]] if claims else items
 
     @app.get("/findings/{finding_id}/investigation", dependencies=[Depends(require_token)])
-    def investigate(finding_id: str) -> dict[str, str]:
+    def investigate(finding_id: str, claims: dict | None = Depends(require_token)) -> dict[str, str]:
         item = database.get(finding_id)
-        if item is None:
+        if item is None or (claims and item.authorized_scope != claims["scope"]):
             raise HTTPException(status_code=404, detail="Finding not found")
         from sentinelforge.audit import record
         record('finding_investigated', finding_id=item.id, source=item.source)

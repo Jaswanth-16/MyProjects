@@ -13,6 +13,22 @@ permissions:
 jobs:
   static-security:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: sentinelforge_test
+          POSTGRES_USER: sentinelforge
+          POSTGRES_PASSWORD: test-only-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U sentinelforge"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      SENTINELFORGE_TEST_DATABASE_URL: postgresql://sentinelforge:test-only-password@localhost:5432/sentinelforge_test
     defaults:
       run:
         working-directory: SentinelForge-AI

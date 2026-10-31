@@ -28,9 +28,9 @@ can cause this workflow to fail independently of the normal test workflow.
 ## Release blockers
 
 - No multi-user RBAC, tenant isolation, or secret management integration.
-- No formal database migration process, backup/restore testing, or PostgreSQL CI service test.
-- No rate limiting, HTTPS reverse proxy, or hardened cloud deployment.
-- No comprehensive threat model or independent penetration test.
+- Versioned migrations and PostgreSQL CI tests exist; migration concurrency and operational recovery procedures still require review.
+- In-process rate limiting and local HTTPS example exist; distributed edge limits and hardened cloud deployment remain outstanding.
+- Initial threat model exists; independent penetration testing remains outstanding.
 - AI output requires human review; no automatic remediation is implemented.
 
 A passing CI run verifies the automated checks only, not this entire manual checklist.

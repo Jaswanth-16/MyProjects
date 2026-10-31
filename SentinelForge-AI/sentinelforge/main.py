@@ -154,21 +154,27 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
                     await JSONResponse({"detail": "Invalid Content-Length"}, status_code=400)(scope, receive, send)
                     return
             total = 0
-            async def limited_receive():
-                nonlocal total
+            chunks = []
+            while True:
                 message = await receive()
-                if message["type"] == "http.request":
-                    total += len(message.get("body", b""))
-                    if total > self.max_bytes:
-                        raise BodyTooLarge()
-                return message
-            try:
-                await self.wrapped(scope, limited_receive, send)
-            except BodyTooLarge:
-                await JSONResponse({"detail": "Request too large"}, status_code=413)(scope, receive, send)
-
-    class BodyTooLarge(Exception):
-        pass
+                if message["type"] != "http.request":
+                    return
+                chunk = message.get("body", b"")
+                total += len(chunk)
+                if total > self.max_bytes:
+                    await JSONResponse({"detail": "Request too large"}, status_code=413)(scope, receive, send)
+                    return
+                chunks.append(chunk)
+                if not message.get("more_body", False):
+                    break
+            delivered = False
+            async def buffered_receive():
+                nonlocal delivered
+                if not delivered:
+                    delivered = True
+                    return {"type": "http.request", "body": b"".join(chunks), "more_body": False}
+                return {"type": "http.disconnect"}
+            await self.wrapped(scope, buffered_receive, send)
 
     app.add_middleware(BodyLimitMiddleware)
 

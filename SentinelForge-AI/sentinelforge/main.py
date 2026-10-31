@@ -109,6 +109,9 @@ def create_app(store: InMemoryStore | None = None, investigator: Investigator | 
     app = FastAPI(title="SentinelForge AI", version="0.1.0")
     if store is not None:
         database = store
+    elif os.getenv('SENTINELFORGE_DATABASE_URL'):
+        from sentinelforge.postgres import PostgresStore
+        database = PostgresStore(os.environ['SENTINELFORGE_DATABASE_URL'])
     elif os.getenv('SENTINELFORGE_DB_PATH'):
         from sentinelforge.persistence import SQLiteStore
         database = SQLiteStore(os.environ['SENTINELFORGE_DB_PATH'])

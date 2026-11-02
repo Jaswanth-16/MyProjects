@@ -1,6 +1,6 @@
-# Azure data engineering and applied AI portfolio
+# Cloud Data Engineering, Python & Applied AI Portfolio
 
-I am Jaswanth, an Azure Data and BI Engineer at Accenture. This portfolio connects incremental processing and reporting with source-cited AI troubleshooting. Synthetic project data is separate from production work.
+I am Jaswanth, a Cloud Data and BI Engineer at Accenture with experience in enterprise ETL, SQL and analytics, and exposure to Google Cloud data services. My independent projects explore Python/SQL data pipelines, retrieval-augmented assistance and evidence-grounded incident investigation. Portfolio synthetic data and experimental systems are separate from employer production work.
 
 [GitHub](https://github.com/Jaswanth-16) · [LinkedIn](https://www.linkedin.com/in/jaswanth-cheedella-a3b591200) · [Credentials](https://www.credly.com/users/jaswanth-pavan-kumar-cheedella)
 
@@ -10,8 +10,8 @@ I am Jaswanth, an Azure Data and BI Engineer at Accenture. This portfolio connec
 | [EvidenceBrief](evidencebrief/) | Business-report NLP/RAG, optional Groq generation and quote validation | Cited briefs, 5 live Groq cases, abstention and HTTP adapter tests |
 | [CaseLake](caselake/) | Databricks-first PySpark/Delta lakehouse, MLflow and trained AI ticket routing | Replay-safe Bronze/Silver/Gold, quarantine and human-review suggestions |
 | [TransitPulse](transitpulse/) | Incremental Python/SQL, corrections, quarantine, optional Azure assets | 10,000 initial trips become 10,200; replay skips |
-| [OpsEvidence](opsevidence/) | Read-only tool agent, scoped statistics and evidence validation | Five incident families over 420 synthetic runs |
-| [PipelineCopilot](pipelinecopilot/) | RAG, BM25 retrieval, citations, redaction and abstention | Eight runbooks, 30 curated retrieval cases |
+| **[OpsEvidence](opsevidence/)** — incident investigation | Read-only tool agent, scoped statistics and evidence validation | Five incident families over 420 synthetic runs |
+| **[PipelineCopilot](pipelinecopilot/)** — retrieval-assisted runbooks | RAG, BM25 retrieval, citations, redaction and abstention | Eight runbooks, 30 curated retrieval cases |
 | [LogLens](loglens/) | Structured extraction and source-line validation | Beginner offline/live comparison lab |
 
 ## Evidence before claims

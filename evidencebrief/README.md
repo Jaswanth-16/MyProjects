@@ -1,5 +1,7 @@
 # EvidenceBrief — Source-Grounded Business Briefs
 
+![Architecture infographic](docs/architecture-infographic.svg)
+
 A Python NLP/RAG project for producing reviewable business briefs from approved
 Markdown reports and method documents. It retrieves evidence, requests a
 structured brief from an optional LLM, and rejects unsupported quotations or

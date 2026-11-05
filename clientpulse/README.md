@@ -1,5 +1,7 @@
 # ClientPulse — Python and SQL Customer Analytics
 
+![Architecture infographic](docs/architecture-infographic.svg)
+
 A reproducible analytics project for a consulting-style question: **which
 observed customer behaviors are associated with next-month churn, and can a
 baseline machine-learning model rank that risk?** All data are synthetic.

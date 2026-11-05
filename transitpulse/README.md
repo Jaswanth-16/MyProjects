@@ -1,5 +1,7 @@
 # TransitPulse
 
+![Architecture infographic](docs/architecture-infographic.svg)
+
 **Transit operations analytics with reliable incremental ingestion.**
 
 [![TransitPulse CI](https://github.com/Jaswanth-16/MyProjects/actions/workflows/transitpulse-ci.yml/badge.svg)](https://github.com/Jaswanth-16/MyProjects/actions/workflows/transitpulse-ci.yml)

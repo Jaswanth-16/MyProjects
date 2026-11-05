@@ -1,5 +1,7 @@
 # LogLens
 
+![Architecture infographic](docs/architecture-infographic.svg)
+
 A beginner project that converts a pipeline failure log into a validated JSON summary. Learn prompts, structured output, provider APIs, redaction and evidence checks before building an agent.
 
 ## Run locally

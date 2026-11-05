@@ -1,5 +1,7 @@
 # CaseLake — Databricks AI Ticket Lakehouse
 
+![Architecture infographic](docs/architecture-infographic.svg)
+
 A Databricks-first portfolio project: ingest synthetic support-ticket events,
 build reliable Delta tables, and train a real AI classifier to suggest routing
 categories. Databricks is the data and orchestration platform; AI consumes the

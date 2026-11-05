@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SentinelForge AI | Local Security Dashboard</title>
+<style>
+:root{font-family:system-ui,Arial,sans-serif;color-scheme:dark;background:#101827;color:#eaf0fa}
+body{max-width:1100px;margin:auto;padding:28px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{margin:0}p{color:#b9c5d7}input,button{background:#1d2b41;color:#fff;border:1px solid #43546f;border-radius:7px;padding:10px}
+button{cursor:pointer}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.card,article{background:#1c2a40;border:1px solid #34465e;border-radius:12px;padding:18px}.count{font-size:32px;font-weight:700}
+article{margin:12px 0}small{color:#b9c5d7}.severity{font-weight:700;text-transform:uppercase}.critical,.high{color:#ff9a9a}.medium{color:#ffcf7a}.low{color:#9ce0b4}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111c2d;padding:12px;border-radius:8px}#message{min-height:24px}
+</style></head><body>
+<header><div><h1>🛡 SentinelForge AI</h1><p>Local defensive findings and investigation dashboard</p></div><small>Development preview · No external services</small></header>
+<div class="controls"><input id="token" type="password" autocomplete="off" placeholder="API token (if enabled)" aria-label="API token">
+<button id="refresh">Refresh findings</button></div>
+<div id="message" role="status"></div>
+<section class="cards" aria-label="Finding summary"><div class="card">Total findings<div class="count" id="total">—</div></div>
+<div class="card">Critical / High<div class="count" id="urgent">—</div></div><div class="card">Medium<div class="count" id="medium">—</div></div></section>
+<h2>Findings</h2><div id="findings"></div>
+<script>
+const $=id=>document.getElementById(id);
+function auth(){const t=$('token').value;return t?{'Authorization':'Bearer '+t}:{}}
+function element(tag,text,cls){const n=document.createElement(tag);n.textContent=text;if(cls)n.className=cls;return n}
+async function refresh(){
+ $('message').textContent='Loading...';
+ try{
+ const response=await fetch('/findings',{headers:auth(),cache:'no-store'});
+ if(!response.ok)throw Error('HTTP '+response.status+(response.status===401?' — enter the configured API token':''));
+ const items=await response.json();$('total').textContent=items.length;
+ $('urgent').textContent=items.filter(x=>['critical','high'].includes(x.severity)).length;
+ $('medium').textContent=items.filter(x=>x.severity==='medium').length;
+ $('findings').replaceChildren();
+ for(const f of items){
+ const article=document.createElement('article');
+ article.append(element('span',f.severity,'severity '+f.severity),element('h3',f.title),element('small',f.source+' · '+f.rule_id+' · '+f.resource));
+ const button=element('button','View investigation');const report=document.createElement('pre');report.hidden=true;
+ button.addEventListener('click',async()=>{
+  if(!report.hidden){report.hidden=true;return}
+  try{const r=await fetch('/findings/'+encodeURIComponent(f.id)+'/investigation',{headers:auth(),cache:'no-store'});
+   if(!r.ok)throw Error('HTTP '+r.status);
+   const data=await r.json();report.textContent=JSON.stringify(data,null,2);report.hidden=false;
+  }catch(e){report.textContent=String(e);report.hidden=false}
+ });
+ article.append(document.createElement('p'),button,report);$('findings').append(article);
+ }
+ $('message').textContent=items.length?'Loaded '+items.length+' findings':'No findings yet. Import a scanner report or submit synthetic findings to the API.';
+ }catch(e){$('message').textContent='Unable to load findings: '+e.message}
+}
+$('refresh').addEventListener('click',refresh);refresh();
+</script></body></html>

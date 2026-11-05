@@ -1,0 +1,19 @@
+name: SentinelForge CI
+on:
+  push:
+    paths: ["SentinelForge-AI/**", ".github/workflows/sentinelforge-ci.yml"]
+  pull_request:
+    paths: ["SentinelForge-AI/**", ".github/workflows/sentinelforge-ci.yml"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: SentinelForge-AI
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e ".[dev]"
+      - run: pytest -q

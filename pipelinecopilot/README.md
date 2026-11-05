@@ -1,5 +1,7 @@
 # PipelineCopilot
 
+![Architecture infographic](docs/architecture-infographic.svg)
+
 **A source-cited troubleshooting assistant for Azure data pipeline failures.**
 
 [![PipelineCopilot CI](https://github.com/Jaswanth-16/MyProjects/actions/workflows/pipelinecopilot-ci.yml/badge.svg)](https://github.com/Jaswanth-16/MyProjects/actions/workflows/pipelinecopilot-ci.yml)

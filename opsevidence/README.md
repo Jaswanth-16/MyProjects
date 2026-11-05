@@ -1,5 +1,7 @@
 # OpsEvidence
 
+![Architecture infographic](docs/architecture-infographic.svg)
+
 A capstone study project that investigates synthetic Azure pipeline incidents with a bounded agent loop, read-only SQLite tools, lexical runbook retrieval and validated citations. Designed around data-engineering incidents you can explain in an interview.
 
 ## Run locally

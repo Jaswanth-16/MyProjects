@@ -1,6 +1,10 @@
 name: AI Shorts - review build
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'ai-shorts-automation/**'
+      - '.github/workflows/ai-shorts.yml'
   push:
     paths:
       - 'ai-shorts-automation/**'

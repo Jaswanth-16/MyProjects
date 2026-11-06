@@ -8,6 +8,7 @@ import textwrap
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
+from scene_art import generate_scene
 
 WIDTH, HEIGHT = 720, 1280
 
@@ -55,10 +56,13 @@ def scene_image(scene, index, images_dir, out_dir):
         with Image.open(source) as original:
             image = ImageOps.fit(original.convert("RGB"), (WIDTH, HEIGHT), method=Image.Resampling.LANCZOS)
     else:
-        image = Image.new("RGB", (WIDTH, HEIGHT), (23 + index * 4, 34 + index * 3, 62 + index * 2))
-        draw = ImageDraw.Draw(image)
-        draw.ellipse((125, 290, 595, 760), fill=(216, 144, 75))
-        draw.text((70, 80), "PLACEHOLDER — ADD SCENE ART", font=font(24), fill="white")
+        if index <= 6:
+            generated = generate_scene(index, out_dir / f"art_{index:02d}.png")
+            with Image.open(generated) as original:
+                image = original.convert("RGB")
+        else:
+            image = Image.new("RGB", (WIDTH, HEIGHT), (23, 34, 62))
+            ImageDraw.Draw(image).text((70, 80), "ADD SCENE ART", font=font(24), fill="white")
     draw = ImageDraw.Draw(image, "RGBA")
     words = scene["text"].split()
     lines, line = [], ""

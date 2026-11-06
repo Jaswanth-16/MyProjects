@@ -18,7 +18,7 @@ python -m pytest -q
 python pipeline.py --story story.json --output output --voice offline
 ```
 
-Output: `output/short.mp4`. Replace `images/scene_01.png` etc. with your own artwork. If missing, clear labeled placeholder artwork is generated; **this is not AI image generation**. The `visual_prompt` field is a handoff for a separately configured image generator.
+Output: `output/short.mp4`. Replace `images/scene_01.png` etc. with your own artwork. For the included six-scene fox-and-star sample, missing scene images are replaced with six distinct locally illustrated scenes featuring a consistent fox and moving star. This is deterministic Pillow artwork, **not generative AI imagery**. For arbitrary stories, supply your own `images/scene_01.png` etc.; scenes beyond six use labeled placeholders. The `visual_prompt` field is a handoff for a separately configured image generator.
 
 For optional natural neural narration, install `edge-tts` and run:
 

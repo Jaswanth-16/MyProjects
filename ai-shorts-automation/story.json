@@ -1,0 +1,36 @@
+{
+  "title": "The Little Fox Who Saved a Star",
+  "language": "en",
+  "scenes": [
+    {
+      "text": "One night, a little fox found a fallen star.",
+      "visual_prompt": "A tiny orange fox finds a glowing star in a moonlit meadow.",
+      "duration": 6
+    },
+    {
+      "text": "The star whispered, I need to get home.",
+      "visual_prompt": "Close-up of a warm golden star and curious fox.",
+      "duration": 6
+    },
+    {
+      "text": "The fox carried it through the glowing forest.",
+      "visual_prompt": "Fox crossing a magical forest carrying a glowing star.",
+      "duration": 6
+    },
+    {
+      "text": "At the tallest hill, they reached for the sky.",
+      "visual_prompt": "Fox on a hill beneath a vast night sky.",
+      "duration": 6
+    },
+    {
+      "text": "The star floated up and lit the whole valley.",
+      "visual_prompt": "Golden star rising into the sky over a valley.",
+      "duration": 6
+    },
+    {
+      "text": "And the fox knew kindness can light the dark.",
+      "visual_prompt": "Happy fox looking at the sparkling sky.",
+      "duration": 6
+    }
+  ]
+}
